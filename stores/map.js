@@ -1,43 +1,83 @@
 import { defineStore } from 'pinia'
 
-export const useMapStore = defineStore('map', () =>{
+export const useMapStore = defineStore('map', () => {
+  // Reactive Variables Start
+  const properties = ref([]);
+  // Reactive Variables End
 
-  const properties = ref([
-    {
-      id: 1,
-      title: "Modern Downtown Apartment",
-      price: 450000,
-      type: "Apartment",
-      bedrooms: 2,
-      bathrooms: 2,
-      sqft: 1200,
-      location: {
-        lat: 51.5074,  
-        lng: -0.1278
-      },
-      address: "123 Downtown Street, London",
-      image: "apartment1.jpg"
-    },
-    {
-      id: 2,
-      title: "Suburban Family Home",
-      price: 750000,
-      type: "House",
-      bedrooms: 4,
-      bathrooms: 3,
-      sqft: 2500,
-      location: {
-        lat: 51.5225,
-        lng: -0.1389
-      },
-      address: "456 Family Road, London",
-      image: "house1.jpg"
-    }])
+  // Variables Start
+  const existingLocations = [];
+  // Variables End
+
+  // Haversine Start
+  const haversine = (lat1, lon1, lat2, lon2) => {
+    // Calculate distance between two coordinates
+    const R = 6371;
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c;
+    return distance;
+  };
+  // Haversine End
 
 
+  // Generate Random Property Start
+  const generateRandomProperty = (id) => {
+    const price = Math.floor(Math.random() * (1500000 - 100000) + 100000);
+    const type = Math.random() < 0.5 ? "House" : "Apartment";
+    const bedrooms = Math.floor(Math.random() * 5) + 1;
+    const bathrooms = Math.floor(Math.random() * 3) + 1;
+    const sqft = Math.floor(Math.random() * (4000 - 800) + 800);
 
-    return {
-      properties
-   
+    let lat, lng;
+    let isTooClose = true;
+
+    while (isTooClose) {
+      lat = 51.3 + Math.random() * 0.6;
+      lng = -0.4 + Math.random() * 0.3;
+
+      isTooClose = existingLocations.some(location => {
+        return haversine(lat, lng, location.lat, location.lng) < 1;
+      });
     }
-})
+
+    const address = `${Math.floor(Math.random() * 500) + 1} ${type === "House" ? "Family" : "Downtown"} Road, London`;
+    const image = type === "House" ? "house.jpg" : "apartment.jpg";
+    const newProperty = {
+      id,
+      title: `${type} in London`,
+      price,
+      type,
+      bedrooms,
+      bathrooms,
+      sqft,
+      location: { lat, lng },
+      address,
+      image
+    };
+
+    existingLocations.push(newProperty.location);
+
+    return newProperty;
+  };
+  // Generate Random Property End
+
+  // Get Properties Start
+  const getProperties = computed(() => properties.value);
+  // Get Properties End
+
+
+  for (let i = 1; i <= 50; i++) {
+    properties.value.push(generateRandomProperty(i));
+  }
+
+
+  return {
+    properties,
+    getProperties
+  };
+});

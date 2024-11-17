@@ -548,14 +548,7 @@ h6 {
   background: linear-gradient(to top right, #c084fc, #9333ea) !important; /* Softer and more blended gradient */
 }
 
-.p-datatable-table tr th {
-  border: none !important;
-  font-weight: 500 !important;
-  font-size: 0.9rem !important;
-  color: white !important;
-  text-wrap: nowrap;
-  background: linear-gradient(to top right, #4f46e5, #4338ca) !important; /* Softer blue/purple gradient */
-}
+
 
 /* Apply Inter font globally */
 h1, h2, h3, h4, p, span {
