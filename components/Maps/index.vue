@@ -103,8 +103,8 @@ const initializeMap = async () => {
       // Add listener to show InfoWindow on click
       marker.addListener('click', () => {
         selectedLocation.value = location
-        infoWindow.setContent(content)
-        infoWindow.open(map, marker)
+        // infoWindow.setContent(content)
+        // infoWindow.open(map, marker)
       })
     })
 
