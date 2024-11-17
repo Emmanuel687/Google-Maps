@@ -1,8 +1,9 @@
 
 <script setup></script>
 <template>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!!!
-  </h1>
-  <AutoComplete v-model="value" :suggestions="items" @complete="search" />
+
+<section class="dashboard rounded-md py-3 bg-white h-full  overflow-x-auto">
+  <Maps />
+</section>
+
 </template>

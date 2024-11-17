@@ -71,6 +71,9 @@
       "assets": [
         "../assets"
       ],
+      "assets/*": [
+        "../assets/*"
+      ],
       "public": [
         "../public"
       ],
@@ -142,6 +145,8 @@
     "../**/*",
     "../node_modules/@primevue/nuxt-module/runtime",
     "../node_modules/@primevue/nuxt-module/dist/runtime",
+    "../node_modules/@pinia/nuxt/runtime",
+    "../node_modules/@pinia/nuxt/dist/runtime",
     "../node_modules/@nuxt/devtools/runtime",
     "../node_modules/@nuxt/devtools/dist/runtime",
     "../node_modules/@nuxt/telemetry/runtime",
@@ -154,6 +159,8 @@
     "../node_modules/nuxt/node_modules",
     "../node_modules/@primevue/nuxt-module/runtime/server",
     "../node_modules/@primevue/nuxt-module/dist/runtime/server",
+    "../node_modules/@pinia/nuxt/runtime/server",
+    "../node_modules/@pinia/nuxt/dist/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/devtools/dist/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",

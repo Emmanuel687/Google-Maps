@@ -2,7 +2,14 @@
 import type { DefineComponent, SlotsType } from 'vue'
 type IslandComponent<T extends DefineComponent> = T & DefineComponent<{}, {refresh: () => Promise<void>}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, SlotsType<{ fallback: { error: unknown } }>>
 interface _GlobalComponents {
-      'NuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
+      'CustomInputContainer': typeof import("../components/Custom/InputContainer.vue")['default']
+    'CustomLoader': typeof import("../components/Custom/Loader.vue")['default']
+    'CustomQuill': typeof import("../components/Custom/Quill.vue")['default']
+    'DatatableEmptyDatatable': typeof import("../components/Datatable/EmptyDatatable.vue")['default']
+    'Maps': typeof import("../components/Maps/index.vue")['default']
+    'Sidebar': typeof import("../components/Sidebar/index.vue")['default']
+    'Topbar': typeof import("../components/Topbar/index.vue")['default']
+    'NuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
     'NuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
     'NuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
     'ClientOnly': typeof import("../node_modules/nuxt/dist/app/components/client-only")['default']
@@ -25,7 +32,14 @@ interface _GlobalComponents {
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'NuxtIsland': typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
     'NuxtRouteAnnouncer': IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
-      'LazyNuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
+      'LazyCustomInputContainer': typeof import("../components/Custom/InputContainer.vue")['default']
+    'LazyCustomLoader': typeof import("../components/Custom/Loader.vue")['default']
+    'LazyCustomQuill': typeof import("../components/Custom/Quill.vue")['default']
+    'LazyDatatableEmptyDatatable': typeof import("../components/Datatable/EmptyDatatable.vue")['default']
+    'LazyMaps': typeof import("../components/Maps/index.vue")['default']
+    'LazySidebar': typeof import("../components/Sidebar/index.vue")['default']
+    'LazyTopbar': typeof import("../components/Topbar/index.vue")['default']
+    'LazyNuxtWelcome': typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
     'LazyNuxtLayout': typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
     'LazyNuxtErrorBoundary': typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
     'LazyClientOnly': typeof import("../node_modules/nuxt/dist/app/components/client-only")['default']
@@ -54,6 +68,13 @@ declare module 'vue' {
   export interface GlobalComponents extends _GlobalComponents { }
 }
 
+export const CustomInputContainer: typeof import("../components/Custom/InputContainer.vue")['default']
+export const CustomLoader: typeof import("../components/Custom/Loader.vue")['default']
+export const CustomQuill: typeof import("../components/Custom/Quill.vue")['default']
+export const DatatableEmptyDatatable: typeof import("../components/Datatable/EmptyDatatable.vue")['default']
+export const Maps: typeof import("../components/Maps/index.vue")['default']
+export const Sidebar: typeof import("../components/Sidebar/index.vue")['default']
+export const Topbar: typeof import("../components/Topbar/index.vue")['default']
 export const NuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const NuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const NuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']
@@ -77,6 +98,13 @@ export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const NuxtIsland: typeof import("../node_modules/nuxt/dist/app/components/nuxt-island")['default']
 export const NuxtRouteAnnouncer: IslandComponent<typeof import("../node_modules/nuxt/dist/app/components/server-placeholder")['default']>
+export const LazyCustomInputContainer: typeof import("../components/Custom/InputContainer.vue")['default']
+export const LazyCustomLoader: typeof import("../components/Custom/Loader.vue")['default']
+export const LazyCustomQuill: typeof import("../components/Custom/Quill.vue")['default']
+export const LazyDatatableEmptyDatatable: typeof import("../components/Datatable/EmptyDatatable.vue")['default']
+export const LazyMaps: typeof import("../components/Maps/index.vue")['default']
+export const LazySidebar: typeof import("../components/Sidebar/index.vue")['default']
+export const LazyTopbar: typeof import("../components/Topbar/index.vue")['default']
 export const LazyNuxtWelcome: typeof import("../node_modules/nuxt/dist/app/components/welcome.vue")['default']
 export const LazyNuxtLayout: typeof import("../node_modules/nuxt/dist/app/components/nuxt-layout")['default']
 export const LazyNuxtErrorBoundary: typeof import("../node_modules/nuxt/dist/app/components/nuxt-error-boundary")['default']

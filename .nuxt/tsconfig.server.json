@@ -89,6 +89,9 @@
       "assets": [
         "../assets"
       ],
+      "assets/*": [
+        "../assets/*"
+      ],
       "public": [
         "../public"
       ],
@@ -120,6 +123,7 @@
   "include": [
     "./types/nitro-nuxt.d.ts",
     "../node_modules/@primevue/nuxt-module/runtime/server",
+    "../node_modules/@pinia/nuxt/runtime/server",
     "../node_modules/@nuxt/devtools/runtime/server",
     "../node_modules/@nuxt/telemetry/runtime/server",
     "./types/nitro.d.ts",
