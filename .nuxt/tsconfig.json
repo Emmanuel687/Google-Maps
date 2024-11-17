@@ -2,41 +2,44 @@
 {
   "compilerOptions": {
     "paths": {
+      "nitropack/types": [
+        "../node_modules/nitropack/types"
+      ],
       "nitropack": [
-        "../node_modules/.pnpm/nitropack@2.9.7/node_modules/nitropack"
+        "../node_modules/nitropack"
       ],
       "defu": [
-        "../node_modules/.pnpm/defu@6.1.4/node_modules/defu"
+        "../node_modules/defu"
       ],
       "h3": [
-        "../node_modules/.pnpm/h3@1.12.0/node_modules/h3"
+        "../node_modules/h3"
       ],
       "consola": [
-        "../node_modules/.pnpm/consola@3.2.3/node_modules/consola"
+        "../node_modules/consola"
       ],
       "ofetch": [
-        "../node_modules/.pnpm/ofetch@1.4.0/node_modules/ofetch"
+        "../node_modules/ofetch"
       ],
       "@unhead/vue": [
-        "../node_modules/.pnpm/@unhead+vue@1.11.6_vue@3.5.8/node_modules/@unhead/vue"
+        "../node_modules/@unhead/vue"
       ],
       "@nuxt/devtools": [
-        "../node_modules/.pnpm/@nuxt+devtools@1.5.1_vite@5.4.8_vue@3.5.8/node_modules/@nuxt/devtools"
+        "../node_modules/@nuxt/devtools"
       ],
       "@vue/runtime-core": [
-        "../node_modules/.pnpm/@vue+runtime-core@3.5.8/node_modules/@vue/runtime-core"
+        "../node_modules/@vue/runtime-core"
       ],
       "@vue/compiler-sfc": [
-        "../node_modules/.pnpm/@vue+compiler-sfc@3.5.8/node_modules/@vue/compiler-sfc"
+        "../node_modules/@vue/compiler-sfc"
       ],
       "unplugin-vue-router/client": [
-        "../node_modules/.pnpm/unplugin-vue-router@0.10.8_vue-router@4.4.5_vue@3.5.8/node_modules/unplugin-vue-router/client"
+        "../node_modules/unplugin-vue-router/client"
       ],
       "@nuxt/schema": [
-        "../node_modules/.pnpm/@nuxt+schema@3.13.2/node_modules/@nuxt/schema"
+        "../node_modules/@nuxt/schema"
       ],
       "nuxt": [
-        "../node_modules/.pnpm/nuxt@3.13.2_vite@5.4.8/node_modules/nuxt"
+        "../node_modules/nuxt"
       ],
       "~": [
         ".."
@@ -62,6 +65,9 @@
       "@@/*": [
         "../*"
       ],
+      "#shared": [
+        "../shared"
+      ],
       "assets": [
         "../assets"
       ],
@@ -71,32 +77,32 @@
       "public/*": [
         "../public/*"
       ],
-      "#app": [
-        "../node_modules/.pnpm/nuxt@3.13.2_vite@5.4.8/node_modules/nuxt/dist/app"
-      ],
-      "#app/*": [
-        "../node_modules/.pnpm/nuxt@3.13.2_vite@5.4.8/node_modules/nuxt/dist/app/*"
-      ],
-      "vue-demi": [
-        "../node_modules/.pnpm/nuxt@3.13.2_vite@5.4.8/node_modules/nuxt/dist/app/compat/vue-demi"
-      ],
-      "#primevue-style": [
-        "./primevue-style.mjs"
-      ],
-      "#vue-router": [
-        "../node_modules/.pnpm/vue-router@4.4.5_vue@3.5.8/node_modules/vue-router"
-      ],
-      "#imports": [
-        "./imports"
-      ],
-      "#app-manifest": [
-        "./manifest/meta/dev"
-      ],
       "#build": [
         "."
       ],
       "#build/*": [
         "./*"
+      ],
+      "#app": [
+        "../node_modules/nuxt/dist/app"
+      ],
+      "#app/*": [
+        "../node_modules/nuxt/dist/app/*"
+      ],
+      "vue-demi": [
+        "../node_modules/nuxt/dist/app/compat/vue-demi"
+      ],
+      "#primevue-style": [
+        "./primevue-style.mjs"
+      ],
+      "#vue-router": [
+        "../node_modules/vue-router"
+      ],
+      "#imports": [
+        "./imports"
+      ],
+      "#app-manifest": [
+        "./manifest/meta/dev.json"
       ],
       "#components": [
         "./components"
@@ -114,7 +120,7 @@
     "noUncheckedIndexedAccess": false,
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
-    "module": "ESNext",
+    "module": "preserve",
     "noEmit": true,
     "lib": [
       "ESNext",
@@ -134,25 +140,24 @@
     "./nuxt.d.ts",
     "../.config/nuxt.*",
     "../**/*",
-    "../node_modules/.pnpm/@primevue+nuxt-module@4.0.7_vue@3.5.8/node_modules/@primevue/nuxt-module/runtime",
-    "../node_modules/.pnpm/@primevue+nuxt-module@4.0.7_vue@3.5.8/node_modules/@primevue/nuxt-module/dist/runtime",
-    "../node_modules/.pnpm/@nuxt+devtools@1.5.1_vite@5.4.8_vue@3.5.8/node_modules/@nuxt/devtools/runtime",
-    "../node_modules/.pnpm/@nuxt+devtools@1.5.1_vite@5.4.8_vue@3.5.8/node_modules/@nuxt/devtools/dist/runtime",
-    "../node_modules/.pnpm/@nuxt+telemetry@2.6.0/node_modules/@nuxt/telemetry/runtime",
-    "../node_modules/.pnpm/@nuxt+telemetry@2.6.0/node_modules/@nuxt/telemetry/dist/runtime",
+    "../node_modules/@primevue/nuxt-module/runtime",
+    "../node_modules/@primevue/nuxt-module/dist/runtime",
+    "../node_modules/@nuxt/devtools/runtime",
+    "../node_modules/@nuxt/devtools/dist/runtime",
+    "../node_modules/@nuxt/telemetry/runtime",
+    "../node_modules/@nuxt/telemetry/dist/runtime",
     ".."
   ],
   "exclude": [
     "../dist",
     "../node_modules",
-    "../../../node_modules",
-    "../node_modules/.pnpm/nuxt@3.13.2_vite@5.4.8/node_modules/nuxt/node_modules",
-    "../node_modules/.pnpm/@primevue+nuxt-module@4.0.7_vue@3.5.8/node_modules/@primevue/nuxt-module/runtime/server",
-    "../node_modules/.pnpm/@primevue+nuxt-module@4.0.7_vue@3.5.8/node_modules/@primevue/nuxt-module/dist/runtime/server",
-    "../node_modules/.pnpm/@nuxt+devtools@1.5.1_vite@5.4.8_vue@3.5.8/node_modules/@nuxt/devtools/runtime/server",
-    "../node_modules/.pnpm/@nuxt+devtools@1.5.1_vite@5.4.8_vue@3.5.8/node_modules/@nuxt/devtools/dist/runtime/server",
-    "../node_modules/.pnpm/@nuxt+telemetry@2.6.0/node_modules/@nuxt/telemetry/runtime/server",
-    "../node_modules/.pnpm/@nuxt+telemetry@2.6.0/node_modules/@nuxt/telemetry/dist/runtime/server",
+    "../node_modules/nuxt/node_modules",
+    "../node_modules/@primevue/nuxt-module/runtime/server",
+    "../node_modules/@primevue/nuxt-module/dist/runtime/server",
+    "../node_modules/@nuxt/devtools/runtime/server",
+    "../node_modules/@nuxt/devtools/dist/runtime/server",
+    "../node_modules/@nuxt/telemetry/runtime/server",
+    "../node_modules/@nuxt/telemetry/dist/runtime/server",
     "../.output"
   ]
 }

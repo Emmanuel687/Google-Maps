@@ -1,37 +1,280 @@
-import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/node-fetch-native@1.6.4/node_modules/node-fetch-native/dist/polyfill.mjs';
+import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { getRequestHeader, splitCookiesString, setResponseStatus, setResponseHeader, send, getRequestHeaders, isEvent, createEvent, fetchWithEvent, defineEventHandler, handleCacheHeaders, eventHandler, getResponseStatus, setResponseHeaders, setHeaders, sendRedirect, proxyRequest, createError, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, readBody, getQuery as getQuery$1, getResponseStatusText } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
+import { mkdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { mkdirSync } from 'node:fs';
-import { parentPort, threadId } from 'node:worker_threads';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, isEvent, createEvent, fetchWithEvent, getRequestHeader, eventHandler, setHeaders, sendRedirect, proxyRequest, createError, setResponseHeader, send, getResponseStatus, setResponseStatus, setResponseHeaders, getRequestHeaders, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getRouterParam, getQuery as getQuery$1, readBody, getResponseStatusText } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/h3@1.12.0/node_modules/h3/dist/index.mjs';
-import { getRequestDependencies, getPreloadLinks, getPrefetchLinks, createRenderer } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/vue-bundle-renderer@2.1.1/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { stringify, uneval } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/devalue@5.0.0/node_modules/devalue/index.js';
-import destr from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/destr@2.0.3/node_modules/destr/dist/index.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, joinRelativeURL } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/ufo@1.5.4/node_modules/ufo/dist/index.mjs';
-import { renderToString } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/vue@3.5.8/node_modules/vue/server-renderer/index.mjs';
-import { propsToString, renderSSRHead } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/@unhead+ssr@1.11.6/node_modules/@unhead/ssr/dist/index.mjs';
-import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/ofetch@1.4.0/node_modules/ofetch/dist/node.mjs';
-import { createCall, createFetch } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/unenv@1.10.0/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/hookable@5.5.3/node_modules/hookable/dist/index.mjs';
-import { klona } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/klona@2.0.6/node_modules/klona/dist/index.mjs';
-import { snakeCase } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/scule@1.3.0/node_modules/scule/dist/index.mjs';
-import defu, { defuFn } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/defu@6.1.4/node_modules/defu/dist/defu.mjs';
-import { hash } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/ohash@1.1.4/node_modules/ohash/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/unstorage@1.12.0_ioredis@5.4.1/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/unstorage@1.12.0_ioredis@5.4.1/node_modules/unstorage/drivers/fs.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/radix3@1.1.2/node_modules/radix3/dist/index.mjs';
+import { threadId, parentPort } from 'node:worker_threads';
+import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { stringify, uneval } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/devalue/index.js';
+import destr from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/destr/dist/index.mjs';
+import { withQuery, joinURL, withTrailingSlash, parseURL, withoutBase, getQuery, joinRelativeURL } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/ufo/dist/index.mjs';
+import { renderToString } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/vue/server-renderer/index.mjs';
+import { propsToString, renderSSRHead } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/@unhead/ssr/dist/index.mjs';
+import { createHooks } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/hookable/dist/index.mjs';
+import { createFetch as createFetch$1, Headers as Headers$1 } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/ofetch/dist/node.mjs';
+import { createCall, createFetch } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/unenv/runtime/fetch/index.mjs';
+import { klona } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/scule/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/unstorage/drivers/fs.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/radix3/dist/index.mjs';
+import { getContext } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/unctx/dist/index.mjs';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { consola } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/consola@3.2.3/node_modules/consola/dist/index.mjs';
-import { getContext } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/unctx@2.3.1/node_modules/unctx/dist/index.mjs';
-import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/errx@0.1.0/node_modules/errx/dist/index.js';
-import { isVNode, version, unref } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/vue@3.5.8/node_modules/vue/index.mjs';
-import BaseStyle from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/@primevue+core@4.0.7_vue@3.5.8/node_modules/@primevue/core/base/style/index.mjs';
-import { Theme } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/@primeuix+styled@0.0.5/node_modules/@primeuix/styled/index.mjs';
-import { createServerHead as createServerHead$1, CapoPlugin } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/unhead@1.11.6/node_modules/unhead/dist/index.mjs';
-import { defineHeadPlugin } from 'file:///Users/emmanuel/Desktop/Task%20ManagerV3/node_modules/.pnpm/@unhead+shared@1.11.6/node_modules/@unhead/shared/dist/index.mjs';
+import { consola } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/consola/dist/index.mjs';
+import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/errx/dist/index.js';
+import { isVNode, unref, version } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/vue/index.mjs';
+import BaseStyle from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/@primevue/core/base/style/index.mjs';
+import { Theme } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/@primeuix/styled/index.mjs';
+import { hash } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/ohash/dist/index.mjs';
+import { createServerHead as createServerHead$1, CapoPlugin } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/unhead/dist/index.mjs';
+import { defineHeadPlugin } from 'file:///Users/emmanuel/Desktop/GoogleMaps/node_modules/@unhead/shared/dist/index.mjs';
 
-const r=Object.create(null),E=e=>globalThis.process?.env||globalThis._importMeta_.env||globalThis.Deno?.env.toObject()||globalThis.__env__||(e?r:globalThis),s=new Proxy(r,{get(e,o){return E()[o]??r[o]},has(e,o){const i=E();return o in i||o in r},set(e,o,i){const g=E(!0);return g[o]=i,!0},deleteProperty(e,o){if(!o)return !1;const i=E(!0);return delete i[o],!0},ownKeys(){const e=E(!0);return Object.keys(e)}}),t=typeof process<"u"&&process.env&&"development"||"",p=[["APPVEYOR"],["AWS_AMPLIFY","AWS_APP_ID",{ci:!0}],["AZURE_PIPELINES","SYSTEM_TEAMFOUNDATIONCOLLECTIONURI"],["AZURE_STATIC","INPUT_AZURE_STATIC_WEB_APPS_API_TOKEN"],["APPCIRCLE","AC_APPCIRCLE"],["BAMBOO","bamboo_planKey"],["BITBUCKET","BITBUCKET_COMMIT"],["BITRISE","BITRISE_IO"],["BUDDY","BUDDY_WORKSPACE_ID"],["BUILDKITE"],["CIRCLE","CIRCLECI"],["CIRRUS","CIRRUS_CI"],["CLOUDFLARE_PAGES","CF_PAGES",{ci:!0}],["CODEBUILD","CODEBUILD_BUILD_ARN"],["CODEFRESH","CF_BUILD_ID"],["DRONE"],["DRONE","DRONE_BUILD_EVENT"],["DSARI"],["GITHUB_ACTIONS"],["GITLAB","GITLAB_CI"],["GITLAB","CI_MERGE_REQUEST_ID"],["GOCD","GO_PIPELINE_LABEL"],["LAYERCI"],["HUDSON","HUDSON_URL"],["JENKINS","JENKINS_URL"],["MAGNUM"],["NETLIFY"],["NETLIFY","NETLIFY_LOCAL",{ci:!1}],["NEVERCODE"],["RENDER"],["SAIL","SAILCI"],["SEMAPHORE"],["SCREWDRIVER"],["SHIPPABLE"],["SOLANO","TDDIUM"],["STRIDER"],["TEAMCITY","TEAMCITY_VERSION"],["TRAVIS"],["VERCEL","NOW_BUILDER"],["VERCEL","VERCEL",{ci:!1}],["VERCEL","VERCEL_ENV",{ci:!1}],["APPCENTER","APPCENTER_BUILD_ID"],["CODESANDBOX","CODESANDBOX_SSE",{ci:!1}],["STACKBLITZ"],["STORMKIT"],["CLEAVR"],["ZEABUR"],["CODESPHERE","CODESPHERE_APP_ID",{ci:!0}],["RAILWAY","RAILWAY_PROJECT_ID"],["RAILWAY","RAILWAY_SERVICE_ID"]];function B(){if(globalThis.process?.env)for(const e of p){const o=e[1]||e[0];if(globalThis.process?.env[o])return {name:e[0].toLowerCase(),...e[2]}}return globalThis.process?.env?.SHELL==="/bin/jsh"&&globalThis.process?.versions?.webcontainer?{name:"stackblitz",ci:!1}:{name:"",ci:!1}}const l=B(),d=l.name;function n(e){return e?e!=="false":!1}const I=globalThis.process?.platform||"",T=n(s.CI)||l.ci!==!1,R=n(globalThis.process?.stdout&&globalThis.process?.stdout.isTTY);n(s.DEBUG);const C=t==="test"||n(s.TEST);n(s.MINIMAL)||T||C||!R;const a=/^win/i.test(I);!n(s.NO_COLOR)&&(n(s.FORCE_COLOR)||(R||a)&&s.TERM!=="dumb"||T);const _=(globalThis.process?.versions?.node||"").replace(/^v/,"")||null;Number(_?.split(".")[0])||null;const W=globalThis.process||Object.create(null),c={versions:{}};new Proxy(W,{get(e,o){if(o==="env")return s;if(o in e)return e[o];if(o in c)return c[o]}});const A=globalThis.process?.release?.name==="node",L=!!globalThis.Bun||!!globalThis.process?.versions?.bun,D=!!globalThis.Deno,O=!!globalThis.fastly,S=!!globalThis.Netlify,N=!!globalThis.EdgeRuntime,u=globalThis.navigator?.userAgent==="Cloudflare-Workers",b=!!globalThis.__lagon__,F=[[S,"netlify"],[N,"edge-light"],[u,"workerd"],[O,"fastly"],[D,"deno"],[L,"bun"],[A,"node"],[b,"lagon"]];function G(){const e=F.find(o=>o[0]);if(e)return {name:e[1]}}const P=G();P?.name||"";
+function hasReqHeader(event, name, includes) {
+  const value = getRequestHeader(event, name);
+  return value && typeof value === "string" && value.toLowerCase().includes(includes);
+}
+function isJsonRequest(event) {
+  if (hasReqHeader(event, "accept", "text/html")) {
+    return false;
+  }
+  return hasReqHeader(event, "accept", "application/json") || hasReqHeader(event, "user-agent", "curl/") || hasReqHeader(event, "user-agent", "httpie/") || hasReqHeader(event, "sec-fetch-mode", "cors") || event.path.startsWith("/api/") || event.path.endsWith(".json");
+}
+function normalizeError(error, isDev) {
+  const cwd = typeof process.cwd === "function" ? process.cwd() : "/";
+  const stack = (error.unhandled || error.fatal) ? [] : (error.stack || "").split("\n").splice(1).filter((line) => line.includes("at ")).map((line) => {
+    const text = line.replace(cwd + "/", "./").replace("webpack:/", "").replace("file://", "").trim();
+    return {
+      text,
+      internal: line.includes("node_modules") && !line.includes(".cache") || line.includes("internal") || line.includes("new Promise")
+    };
+  });
+  const statusCode = error.statusCode || 500;
+  const statusMessage = error.statusMessage ?? (statusCode === 404 ? "Not Found" : "");
+  const message = error.unhandled ? "internal server error" : error.message || error.toString();
+  return {
+    stack,
+    statusCode,
+    statusMessage,
+    message
+  };
+}
+function _captureError(error, type) {
+  console.error(`[nitro] [${type}]`, error);
+  useNitroApp().captureError(error, { tags: [type] });
+}
+function trapUnhandledNodeErrors() {
+  process.on(
+    "unhandledRejection",
+    (error) => _captureError(error, "unhandledRejection")
+  );
+  process.on(
+    "uncaughtException",
+    (error) => _captureError(error, "uncaughtException")
+  );
+}
+function joinHeaders(value) {
+  return Array.isArray(value) ? value.join(", ") : String(value);
+}
+function normalizeFetchResponse(response) {
+  if (!response.headers.has("set-cookie")) {
+    return response;
+  }
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: normalizeCookieHeaders(response.headers)
+  });
+}
+function normalizeCookieHeader(header = "") {
+  return splitCookiesString(joinHeaders(header));
+}
+function normalizeCookieHeaders(headers) {
+  const outgoingHeaders = new Headers();
+  for (const [name, header] of headers) {
+    if (name === "set-cookie") {
+      for (const cookie of normalizeCookieHeader(header)) {
+        outgoingHeaders.append("set-cookie", cookie);
+      }
+    } else {
+      outgoingHeaders.set(name, joinHeaders(header));
+    }
+  }
+  return outgoingHeaders;
+}
+
+const errorHandler = (async function errorhandler(error, event) {
+  const { stack, statusCode, statusMessage, message } = normalizeError(error);
+  const errorObject = {
+    url: event.path,
+    statusCode,
+    statusMessage,
+    message,
+    stack: statusCode !== 404 ? `<pre>${stack.map((i) => `<span class="stack${i.internal ? " internal" : ""}">${i.text}</span>`).join("\n")}</pre>` : "",
+    // TODO: check and validate error.data for serialisation into query
+    data: error.data
+  };
+  if (error.unhandled || error.fatal) {
+    const tags = [
+      "[nuxt]",
+      "[request error]",
+      error.unhandled && "[unhandled]",
+      error.fatal && "[fatal]",
+      Number(errorObject.statusCode) !== 200 && `[${errorObject.statusCode}]`
+    ].filter(Boolean).join(" ");
+    console.error(tags, (error.message || error.toString() || "internal server error") + "\n" + stack.map((l) => "  " + l.text).join("  \n"));
+  }
+  if (event.handled) {
+    return;
+  }
+  setResponseStatus(event, errorObject.statusCode !== 200 && errorObject.statusCode || 500, errorObject.statusMessage);
+  if (isJsonRequest(event)) {
+    setResponseHeader(event, "Content-Type", "application/json");
+    return send(event, JSON.stringify(errorObject));
+  }
+  const reqHeaders = getRequestHeaders(event);
+  const isRenderingError = event.path.startsWith("/__nuxt_error") || !!reqHeaders["x-nuxt-error"];
+  const res = isRenderingError ? null : await useNitroApp().localFetch(
+    withQuery(joinURL(useRuntimeConfig(event).app.baseURL, "/__nuxt_error"), errorObject),
+    {
+      headers: { ...reqHeaders, "x-nuxt-error": "true" },
+      redirect: "manual"
+    }
+  ).catch(() => null);
+  if (!res) {
+    const { template } = await Promise.resolve().then(function () { return errorDev; }) ;
+    {
+      errorObject.description = errorObject.message;
+    }
+    if (event.handled) {
+      return;
+    }
+    setResponseHeader(event, "Content-Type", "text/html;charset=UTF-8");
+    return send(event, template(errorObject));
+  }
+  const html = await res.text();
+  if (event.handled) {
+    return;
+  }
+  for (const [header, value] of res.headers.entries()) {
+    setResponseHeader(event, header, value);
+  }
+  setResponseStatus(event, res.status && res.status !== 200 ? res.status : void 0, res.statusText);
+  return send(event, html);
+});
+
+const script = `
+if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
+  Object.defineProperty(window, '__NUXT_DEVTOOLS_TIME_METRIC__', {
+    value: {},
+    enumerable: false,
+    configurable: true,
+  })
+}
+window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
+`;
+
+const _nhCbxAtuM2 = (function(nitro) {
+  nitro.hooks.hook("render:html", (htmlContext) => {
+    htmlContext.head.push(`<script>${script}<\/script>`);
+  });
+});
+
+const rootDir = "/Users/emmanuel/Desktop/GoogleMaps";
+
+const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
+
+const appRootTag = "div";
+
+const appRootAttrs = {"id":"__nuxt"};
+
+const appTeleportTag = "div";
+
+const appTeleportAttrs = {"id":"teleports"};
+
+const appId = "nuxt-app";
+
+const devReducers = {
+  VNode: (data) => isVNode(data) ? { type: data.type, props: data.props } : void 0,
+  URL: (data) => data instanceof URL ? data.toString() : void 0
+};
+const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
+const _Ttmbt81cUe = (nitroApp) => {
+  const handler = nitroApp.h3App.handler;
+  nitroApp.h3App.handler = (event) => {
+    return asyncContext.callAsync({ logs: [], event }, () => handler(event));
+  };
+  onConsoleLog((_log) => {
+    const ctx = asyncContext.tryUse();
+    if (!ctx) {
+      return;
+    }
+    const rawStack = captureRawStackTrace();
+    if (!rawStack || rawStack.includes("runtime/vite-node.mjs")) {
+      return;
+    }
+    const trace = [];
+    let filename = "";
+    for (const entry of parseRawStackTrace(rawStack)) {
+      if (entry.source === globalThis._importMeta_.url) {
+        continue;
+      }
+      if (EXCLUDE_TRACE_RE.test(entry.source)) {
+        continue;
+      }
+      filename ||= entry.source.replace(withTrailingSlash(rootDir), "");
+      trace.push({
+        ...entry,
+        source: entry.source.startsWith("file://") ? entry.source.replace("file://", "") : entry.source
+      });
+    }
+    const log = {
+      ..._log,
+      // Pass along filename to allow the client to display more info about where log comes from
+      filename,
+      // Clean up file names in stack trace
+      stack: trace
+    };
+    ctx.logs.push(log);
+  });
+  nitroApp.hooks.hook("afterResponse", () => {
+    const ctx = asyncContext.tryUse();
+    if (!ctx) {
+      return;
+    }
+    return nitroApp.hooks.callHook("dev:ssr-logs", { logs: ctx.logs, path: ctx.event.path });
+  });
+  nitroApp.hooks.hook("render:html", (htmlContext) => {
+    const ctx = asyncContext.tryUse();
+    if (!ctx) {
+      return;
+    }
+    try {
+      const reducers = Object.assign(/* @__PURE__ */ Object.create(null), devReducers, ctx.event.context._payloadReducers);
+      htmlContext.bodyAppend.unshift(`<script type="application/json" data-nuxt-logs="${appId}">${stringify(ctx.logs, reducers)}<\/script>`);
+    } catch (e) {
+      const shortError = e instanceof Error && "toString" in e ? ` Received \`${e.toString()}\`.` : "";
+      console.warn(`[nuxt] Failed to stringify dev server logs.${shortError} You can define your own reducer/reviver for rich types following the instructions in https://nuxt.com/docs/api/composables/use-nuxt-app#payload.`);
+    }
+  });
+};
+const EXCLUDE_TRACE_RE = /\/node_modules\/(?:.*\/)?(?:nuxt|nuxt-nightly|nuxt-edge|nuxt3|consola|@vue)\/|core\/runtime\/nitro/;
+function onConsoleLog(callback) {
+  consola.addReporter({
+    log(logObj) {
+      callback(logObj);
+    }
+  });
+  consola.wrapConsole();
+}
+
+const inlineAppConfig = {
+  "nuxt": {}
+};
+
+
+
+const appConfig = defuFn(inlineAppConfig);
 
 function getEnv(key, opts) {
   const envKey = snakeCase(key).toUpperCase();
@@ -71,14 +314,6 @@ function _expandFromEnv(value) {
   });
 }
 
-const inlineAppConfig = {
-  "nuxt": {}
-};
-
-
-
-const appConfig = defuFn(inlineAppConfig);
-
 const _inlineRuntimeConfig = {
   "app": {
     "baseURL": "/",
@@ -111,6 +346,7 @@ const _inlineRuntimeConfig = {
       "resolvePath": "",
       "importPT": "",
       "importTheme": "",
+      "loadStyles": true,
       "options": {
         "ripple": true,
         "theme": {
@@ -439,6 +675,16 @@ const _inlineRuntimeConfig = {
               "formField": {
                 "paddingX": "0.75rem",
                 "paddingY": "0.5rem",
+                "sm": {
+                  "fontSize": "0.875rem",
+                  "paddingX": "0.625rem",
+                  "paddingY": "0.375rem"
+                },
+                "lg": {
+                  "fontSize": "1.125rem",
+                  "paddingX": "0.875rem",
+                  "paddingY": "0.625rem"
+                },
                 "borderRadius": "{border.radius.md}",
                 "focusRing": {
                   "width": "0",
@@ -543,6 +789,7 @@ const _inlineRuntimeConfig = {
                     "background": "{surface.0}",
                     "disabledBackground": "{surface.200}",
                     "filledBackground": "{surface.50}",
+                    "filledHoverBackground": "{surface.50}",
                     "filledFocusBackground": "{surface.50}",
                     "borderColor": "{surface.300}",
                     "hoverBorderColor": "{surface.400}",
@@ -551,9 +798,11 @@ const _inlineRuntimeConfig = {
                     "color": "{surface.700}",
                     "disabledColor": "{surface.500}",
                     "placeholderColor": "{surface.500}",
+                    "invalidPlaceholderColor": "{red.600}",
                     "floatLabelColor": "{surface.500}",
-                    "floatLabelFocusColor": "{surface.500}",
-                    "floatLabelInvalidColor": "{red.400}",
+                    "floatLabelFocusColor": "{primary.600}",
+                    "floatLabelActiveColor": "{surface.500}",
+                    "floatLabelInvalidColor": "{form.field.invalid.placeholder.color}",
                     "iconColor": "{surface.400}",
                     "shadow": "0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(18, 18, 23, 0.05)"
                   },
@@ -665,17 +914,20 @@ const _inlineRuntimeConfig = {
                     "background": "{surface.950}",
                     "disabledBackground": "{surface.700}",
                     "filledBackground": "{surface.800}",
+                    "filledHoverBackground": "{surface.800}",
                     "filledFocusBackground": "{surface.800}",
-                    "borderColor": "{surface.700}",
-                    "hoverBorderColor": "{surface.600}",
+                    "borderColor": "{surface.600}",
+                    "hoverBorderColor": "{surface.500}",
                     "focusBorderColor": "{primary.color}",
                     "invalidBorderColor": "{red.300}",
                     "color": "{surface.0}",
                     "disabledColor": "{surface.400}",
                     "placeholderColor": "{surface.400}",
+                    "invalidPlaceholderColor": "{red.400}",
                     "floatLabelColor": "{surface.400}",
-                    "floatLabelFocusColor": "{surface.400}",
-                    "floatLabelInvalidColor": "{red.300}",
+                    "floatLabelFocusColor": "{primary.color}",
+                    "floatLabelActiveColor": "{surface.400}",
+                    "floatLabelInvalidColor": "{form.field.invalid.placeholder.color}",
                     "iconColor": "{surface.400}",
                     "shadow": "0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgba(18, 18, 23, 0.05)"
                   },
@@ -780,7 +1032,7 @@ const _inlineRuntimeConfig = {
                     "width": "{focus.ring.width}",
                     "style": "{focus.ring.style}",
                     "color": "{focus.ring.color}",
-                    "offset": "{focus.ring.offset}",
+                    "offset": "-1px",
                     "shadow": "{focus.ring.shadow}"
                   },
                   "toggleIcon": {
@@ -811,6 +1063,7 @@ const _inlineRuntimeConfig = {
                   "background": "{form.field.background}",
                   "disabledBackground": "{form.field.disabled.background}",
                   "filledBackground": "{form.field.filled.background}",
+                  "filledHoverBackground": "{form.field.filled.hover.background}",
                   "filledFocusBackground": "{form.field.filled.focus.background}",
                   "borderColor": "{form.field.border.color}",
                   "hoverBorderColor": "{form.field.hover.border.color}",
@@ -819,6 +1072,7 @@ const _inlineRuntimeConfig = {
                   "color": "{form.field.color}",
                   "disabledColor": "{form.field.disabled.color}",
                   "placeholderColor": "{form.field.placeholder.color}",
+                  "invalidPlaceholderColor": "{form.field.invalid.placeholder.color}",
                   "shadow": "{form.field.shadow}",
                   "paddingX": "{form.field.padding.x}",
                   "paddingY": "{form.field.padding.y}",
@@ -862,6 +1116,12 @@ const _inlineRuntimeConfig = {
                 },
                 "dropdown": {
                   "width": "2.5rem",
+                  "sm": {
+                    "width": "2rem"
+                  },
+                  "lg": {
+                    "width": "3rem"
+                  },
                   "borderColor": "{form.field.border.color}",
                   "hoverBorderColor": "{form.field.border.color}",
                   "activeBorderColor": "{form.field.border.color}",
@@ -882,6 +1142,10 @@ const _inlineRuntimeConfig = {
                 },
                 "colorScheme": {
                   "light": {
+                    "chip": {
+                      "focusBackground": "{surface.200}",
+                      "focusColor": "{surface.800}"
+                    },
                     "dropdown": {
                       "background": "{surface.100}",
                       "hoverBackground": "{surface.200}",
@@ -892,6 +1156,10 @@ const _inlineRuntimeConfig = {
                     }
                   },
                   "dark": {
+                    "chip": {
+                      "focusBackground": "{surface.700}",
+                      "focusColor": "{surface.0}"
+                    },
                     "dropdown": {
                       "background": "{surface.800}",
                       "hoverBackground": "{surface.700}",
@@ -909,21 +1177,37 @@ const _inlineRuntimeConfig = {
                   "height": "2rem",
                   "fontSize": "1rem",
                   "background": "{content.border.color}",
+                  "color": "{content.color}",
                   "borderRadius": "{content.border.radius}"
+                },
+                "icon": {
+                  "size": "1rem"
                 },
                 "group": {
                   "borderColor": "{content.background}",
-                  "offset": "-1rem"
+                  "offset": "-0.75rem"
                 },
                 "lg": {
                   "width": "3rem",
                   "height": "3rem",
-                  "fontSize": "1.5rem"
+                  "fontSize": "1.5rem",
+                  "icon": {
+                    "size": "1.5rem"
+                  },
+                  "group": {
+                    "offset": "-1rem"
+                  }
                 },
                 "xl": {
                   "width": "4rem",
                   "height": "4rem",
-                  "fontSize": "2rem"
+                  "fontSize": "2rem",
+                  "icon": {
+                    "size": "2rem"
+                  },
+                  "group": {
+                    "offset": "-1.5rem"
+                  }
                 }
               },
               "badge": {
@@ -1058,14 +1342,14 @@ const _inlineRuntimeConfig = {
                   "paddingY": "{form.field.padding.y}",
                   "iconOnlyWidth": "2.5rem",
                   "sm": {
-                    "fontSize": "0.875rem",
-                    "paddingX": "0.625rem",
-                    "paddingY": "0.375rem"
+                    "fontSize": "{form.field.sm.font.size}",
+                    "paddingX": "{form.field.sm.padding.x}",
+                    "paddingY": "{form.field.sm.padding.y}"
                   },
                   "lg": {
-                    "fontSize": "1.125rem",
-                    "paddingX": "0.875rem",
-                    "paddingY": "0.625rem"
+                    "fontSize": "{form.field.lg.font.size}",
+                    "paddingX": "{form.field.lg.padding.x}",
+                    "paddingY": "{form.field.lg.padding.y}"
                   },
                   "label": {
                     "fontWeight": "500"
@@ -1295,6 +1579,11 @@ const _inlineRuntimeConfig = {
                         "activeBackground": "{red.100}",
                         "color": "{red.500}"
                       },
+                      "contrast": {
+                        "hoverBackground": "{surface.50}",
+                        "activeBackground": "{surface.100}",
+                        "color": "{surface.950}"
+                      },
                       "plain": {
                         "hoverBackground": "{surface.50}",
                         "activeBackground": "{surface.100}",
@@ -1522,6 +1811,11 @@ const _inlineRuntimeConfig = {
                         "activeBackground": "color-mix(in srgb, {red.400}, transparent 84%)",
                         "color": "{red.400}"
                       },
+                      "contrast": {
+                        "hoverBackground": "{surface.800}",
+                        "activeBackground": "{surface.700}",
+                        "color": "{surface.0}"
+                      },
                       "plain": {
                         "hoverBackground": "{surface.800}",
                         "activeBackground": "{surface.700}",
@@ -1552,9 +1846,7 @@ const _inlineRuntimeConfig = {
                   "background": "{content.background}",
                   "borderColor": "{content.border.color}",
                   "color": "{content.color}",
-                  "padding": "0 0 0.5rem 0",
-                  "fontWeight": "500",
-                  "gap": "0.5rem"
+                  "padding": "0 0 0.5rem 0"
                 },
                 "title": {
                   "gap": "0.5rem",
@@ -1562,6 +1854,12 @@ const _inlineRuntimeConfig = {
                 },
                 "dropdown": {
                   "width": "2.5rem",
+                  "sm": {
+                    "width": "2rem"
+                  },
+                  "lg": {
+                    "width": "3rem"
+                  },
                   "borderColor": "{form.field.border.color}",
                   "hoverBorderColor": "{form.field.border.color}",
                   "activeBorderColor": "{form.field.border.color}",
@@ -1627,12 +1925,14 @@ const _inlineRuntimeConfig = {
                   "margin": "0.5rem 0 0 0"
                 },
                 "month": {
+                  "padding": "0.375rem",
                   "borderRadius": "{content.border.radius}"
                 },
                 "yearView": {
                   "margin": "0.5rem 0 0 0"
                 },
                 "year": {
+                  "padding": "0.375rem",
                   "borderRadius": "{content.border.radius}"
                 },
                 "buttonbar": {
@@ -1743,6 +2043,7 @@ const _inlineRuntimeConfig = {
                   "background": "{form.field.background}",
                   "disabledBackground": "{form.field.disabled.background}",
                   "filledBackground": "{form.field.filled.background}",
+                  "filledHoverBackground": "{form.field.filled.hover.background}",
                   "filledFocusBackground": "{form.field.filled.focus.background}",
                   "borderColor": "{form.field.border.color}",
                   "hoverBorderColor": "{form.field.hover.border.color}",
@@ -1751,6 +2052,7 @@ const _inlineRuntimeConfig = {
                   "color": "{form.field.color}",
                   "disabledColor": "{form.field.disabled.color}",
                   "placeholderColor": "{form.field.placeholder.color}",
+                  "invalidPlaceholderColor": "{form.field.invalid.placeholder.color}",
                   "shadow": "{form.field.shadow}",
                   "paddingX": "{form.field.padding.x}",
                   "paddingY": "{form.field.padding.y}",
@@ -1762,7 +2064,17 @@ const _inlineRuntimeConfig = {
                     "offset": "{form.field.focus.ring.offset}",
                     "shadow": "{form.field.focus.ring.shadow}"
                   },
-                  "transitionDuration": "{form.field.transition.duration}"
+                  "transitionDuration": "{form.field.transition.duration}",
+                  "sm": {
+                    "fontSize": "{form.field.sm.font.size}",
+                    "paddingX": "{form.field.sm.padding.x}",
+                    "paddingY": "{form.field.sm.padding.y}"
+                  },
+                  "lg": {
+                    "fontSize": "{form.field.lg.font.size}",
+                    "paddingX": "{form.field.lg.padding.x}",
+                    "paddingY": "{form.field.lg.padding.y}"
+                  }
                 },
                 "dropdown": {
                   "width": "2.5rem",
@@ -1777,7 +2089,8 @@ const _inlineRuntimeConfig = {
                 },
                 "list": {
                   "padding": "{list.padding}",
-                  "gap": "{list.gap}"
+                  "gap": "{list.gap}",
+                  "mobileIndent": "1rem"
                 },
                 "option": {
                   "focusBackground": "{list.option.focus.background}",
@@ -1794,6 +2107,9 @@ const _inlineRuntimeConfig = {
                     "focusColor": "{list.option.icon.focus.color}",
                     "size": "0.875rem"
                   }
+                },
+                "clearIcon": {
+                  "color": "{form.field.icon.color}"
                 }
               },
               "checkbox": {
@@ -1822,14 +2138,28 @@ const _inlineRuntimeConfig = {
                     "offset": "{focus.ring.offset}",
                     "shadow": "{focus.ring.shadow}"
                   },
-                  "transitionDuration": "{form.field.transition.duration}"
+                  "transitionDuration": "{form.field.transition.duration}",
+                  "sm": {
+                    "width": "1rem",
+                    "height": "1rem"
+                  },
+                  "lg": {
+                    "width": "1.5rem",
+                    "height": "1.5rem"
+                  }
                 },
                 "icon": {
                   "size": "0.875rem",
                   "color": "{form.field.color}",
                   "checkedColor": "{primary.contrast.color}",
                   "checkedHoverColor": "{primary.contrast.color}",
-                  "disabledColor": "{form.field.disabled.color}"
+                  "disabledColor": "{form.field.disabled.color}",
+                  "sm": {
+                    "size": "0.75rem"
+                  },
+                  "lg": {
+                    "size": "1rem"
+                  }
                 }
               },
               "chip": {
@@ -1985,6 +2315,9 @@ const _inlineRuntimeConfig = {
                     "activeColor": "{navigation.item.icon.active.color}"
                   }
                 },
+                "submenu": {
+                  "mobileIndent": "1rem"
+                },
                 "submenuIcon": {
                   "size": "{navigation.submenu.icon.size}",
                   "color": "{navigation.submenu.icon.color}",
@@ -2102,7 +2435,9 @@ const _inlineRuntimeConfig = {
                   "borderWidth": "0 0 1px 0",
                   "padding": "0.75rem 1rem"
                 },
-                "dropPointColor": "{primary.color}",
+                "dropPoint": {
+                  "color": "{primary.color}"
+                },
                 "columnResizerWidth": "0.5rem",
                 "resizeIndicator": {
                   "width": "1px",
@@ -2110,7 +2445,8 @@ const _inlineRuntimeConfig = {
                 },
                 "sortIcon": {
                   "color": "{text.muted.color}",
-                  "hoverColor": "{text.hover.muted.color}"
+                  "hoverColor": "{text.hover.muted.color}",
+                  "size": "0.875rem"
                 },
                 "loadingIcon": {
                   "size": "2rem"
@@ -2276,7 +2612,6 @@ const _inlineRuntimeConfig = {
                   "background": "{overlay.modal.background}",
                   "borderColor": "{overlay.modal.border.color}",
                   "color": "{overlay.modal.color}",
-                  "borderRadius": "{overlay.modal.border.radius}",
                   "shadow": "{overlay.modal.shadow}"
                 },
                 "header": {
@@ -2288,6 +2623,9 @@ const _inlineRuntimeConfig = {
                 },
                 "content": {
                   "padding": "0 {overlay.modal.padding} {overlay.modal.padding} {overlay.modal.padding}"
+                },
+                "footer": {
+                  "padding": "{overlay.modal.padding}"
                 }
               },
               "editor": {
@@ -2371,13 +2709,15 @@ const _inlineRuntimeConfig = {
                   "background": "transparent",
                   "color": "{text.color}",
                   "padding": "1.125rem",
+                  "borderColor": "unset",
                   "borderWidth": "0",
                   "borderRadius": "0",
                   "gap": "0.5rem"
                 },
                 "content": {
                   "highlightBorderColor": "{primary.color}",
-                  "padding": "0 1.125rem 1.125rem 1.125rem"
+                  "padding": "0 1.125rem 1.125rem 1.125rem",
+                  "gap": "1rem"
                 },
                 "file": {
                   "padding": "1rem",
@@ -2387,6 +2727,9 @@ const _inlineRuntimeConfig = {
                     "gap": "0.5rem"
                   }
                 },
+                "fileList": {
+                  "gap": "0.5rem"
+                },
                 "progressbar": {
                   "height": "0.25rem"
                 },
@@ -2394,12 +2737,57 @@ const _inlineRuntimeConfig = {
                   "gap": "0.5rem"
                 }
               },
-              "floatlabel": {
+              "iftalabel": {
                 "root": {
                   "color": "{form.field.float.label.color}",
                   "focusColor": "{form.field.float.label.focus.color}",
                   "invalidColor": "{form.field.float.label.invalid.color}",
-                  "transitionDuration": "0.2s"
+                  "transitionDuration": "0.2s",
+                  "positionX": "{form.field.padding.x}",
+                  "top": "{form.field.padding.y}",
+                  "fontSize": "0.75rem",
+                  "fontWeight": "400"
+                },
+                "input": {
+                  "paddingTop": "1.5rem",
+                  "paddingBottom": "{form.field.padding.y}"
+                }
+              },
+              "floatlabel": {
+                "root": {
+                  "color": "{form.field.float.label.color}",
+                  "focusColor": "{form.field.float.label.focus.color}",
+                  "activeColor": "{form.field.float.label.active.color}",
+                  "invalidColor": "{form.field.float.label.invalid.color}",
+                  "transitionDuration": "0.2s",
+                  "positionX": "{form.field.padding.x}",
+                  "positionY": "{form.field.padding.y}",
+                  "fontWeight": "500",
+                  "active": {
+                    "fontSize": "0.75rem",
+                    "fontWeight": "400"
+                  }
+                },
+                "over": {
+                  "active": {
+                    "top": "-1.25rem"
+                  }
+                },
+                "in": {
+                  "input": {
+                    "paddingTop": "1.5rem",
+                    "paddingBottom": "{form.field.padding.y}"
+                  },
+                  "active": {
+                    "top": "{form.field.padding.y}"
+                  }
+                },
+                "on": {
+                  "borderRadius": "{border.radius.xs}",
+                  "active": {
+                    "background": "{form.field.background}",
+                    "padding": "0 0.125rem"
+                  }
                 }
               },
               "galleria": {
@@ -2481,10 +2869,6 @@ const _inlineRuntimeConfig = {
                   "background": "rgba(255, 255, 255, 0.4)",
                   "hoverBackground": "rgba(255, 255, 255, 0.6)",
                   "activeBackground": "rgba(255, 255, 255, 0.9)"
-                },
-                "mask": {
-                  "background": "{mask.background}",
-                  "color": "{mask.color}"
                 },
                 "closeButton": {
                   "size": "3rem",
@@ -2574,6 +2958,26 @@ const _inlineRuntimeConfig = {
                     "width": "{focus.ring.width}",
                     "style": "{focus.ring.style}",
                     "color": "{focus.ring.color}",
+                    "offset": "{focus.ring.offset}",
+                    "shadow": "{focus.ring.shadow}"
+                  }
+                }
+              },
+              "imagecompare": {
+                "handle": {
+                  "size": "15px",
+                  "hoverSize": "30px",
+                  "background": "rgba(255,255,255,0.3)",
+                  "hoverBackground": "rgba(255,255,255,0.3)",
+                  "borderColor": "unset",
+                  "hoverBorderColor": "unset",
+                  "borderWidth": "0",
+                  "borderRadius": "50%",
+                  "transitionDuration": "{transition.duration}",
+                  "focusRing": {
+                    "width": "{focus.ring.width}",
+                    "style": "{focus.ring.style}",
+                    "color": "rgba(255,255,255,0.3)",
                     "offset": "{focus.ring.offset}",
                     "shadow": "{focus.ring.shadow}"
                   }
@@ -2737,7 +3141,9 @@ const _inlineRuntimeConfig = {
                   "background": "{form.field.background}",
                   "borderColor": "{form.field.border.color}",
                   "color": "{form.field.icon.color}",
-                  "borderRadius": "{form.field.border.radius}"
+                  "borderRadius": "{form.field.border.radius}",
+                  "padding": "0.5rem",
+                  "minWidth": "2.5rem"
                 }
               },
               "inputnumber": {
@@ -2778,11 +3184,26 @@ const _inlineRuntimeConfig = {
                   }
                 }
               },
+              "inputotp": {
+                "root": {
+                  "gap": "0.5rem"
+                },
+                "input": {
+                  "width": "2.5rem",
+                  "sm": {
+                    "width": "2rem"
+                  },
+                  "lg": {
+                    "width": "3rem"
+                  }
+                }
+              },
               "inputtext": {
                 "root": {
                   "background": "{form.field.background}",
                   "disabledBackground": "{form.field.disabled.background}",
                   "filledBackground": "{form.field.filled.background}",
+                  "filledHoverBackground": "{form.field.filled.hover.background}",
                   "filledFocusBackground": "{form.field.filled.focus.background}",
                   "borderColor": "{form.field.border.color}",
                   "hoverBorderColor": "{form.field.hover.border.color}",
@@ -2791,6 +3212,7 @@ const _inlineRuntimeConfig = {
                   "color": "{form.field.color}",
                   "disabledColor": "{form.field.disabled.color}",
                   "placeholderColor": "{form.field.placeholder.color}",
+                  "invalidPlaceholderColor": "{form.field.invalid.placeholder.color}",
                   "shadow": "{form.field.shadow}",
                   "paddingX": "{form.field.padding.x}",
                   "paddingY": "{form.field.padding.y}",
@@ -2804,14 +3226,14 @@ const _inlineRuntimeConfig = {
                   },
                   "transitionDuration": "{form.field.transition.duration}",
                   "sm": {
-                    "fontSize": "0.875rem",
-                    "paddingX": "0.625rem",
-                    "paddingY": "0.375rem"
+                    "fontSize": "{form.field.sm.font.size}",
+                    "paddingX": "{form.field.sm.padding.x}",
+                    "paddingY": "{form.field.sm.padding.y}"
                   },
                   "lg": {
-                    "fontSize": "1.125rem",
-                    "paddingX": "0.875rem",
-                    "paddingY": "0.625rem"
+                    "fontSize": "{form.field.lg.font.size}",
+                    "paddingX": "{form.field.lg.padding.x}",
+                    "paddingY": "{form.field.lg.padding.y}"
                   }
                 }
               },
@@ -2841,20 +3263,11 @@ const _inlineRuntimeConfig = {
                   "background": "{form.field.background}",
                   "disabledBackground": "{form.field.disabled.background}",
                   "borderColor": "{form.field.border.color}",
-                  "hoverBorderColor": "{form.field.hover.border.color}",
-                  "focusBorderColor": "{form.field.focus.border.color}",
                   "invalidBorderColor": "{form.field.invalid.border.color}",
                   "color": "{form.field.color}",
                   "disabledColor": "{form.field.disabled.color}",
                   "shadow": "{form.field.shadow}",
                   "borderRadius": "{form.field.border.radius}",
-                  "focusRing": {
-                    "width": "{form.field.focus.ring.width}",
-                    "style": "{form.field.focus.ring.style}",
-                    "color": "{form.field.focus.ring.color}",
-                    "offset": "{form.field.focus.ring.offset}",
-                    "shadow": "{form.field.focus.ring.shadow}"
-                  },
                   "transitionDuration": "{form.field.transition.duration}"
                 },
                 "list": {
@@ -2911,10 +3324,11 @@ const _inlineRuntimeConfig = {
                   "gap": "0.5rem",
                   "verticalOrientation": {
                     "padding": "{navigation.list.padding}",
-                    "gap": "0"
+                    "gap": "{navigation.list.gap}"
                   },
                   "horizontalOrientation": {
-                    "padding": "0.5rem 0.75rem"
+                    "padding": "0.5rem 0.75rem",
+                    "gap": "0.5rem"
                   },
                   "transitionDuration": "{transition.duration}"
                 },
@@ -2969,7 +3383,7 @@ const _inlineRuntimeConfig = {
                   "borderRadius": "50%",
                   "size": "1.75rem",
                   "color": "{text.muted.color}",
-                  "hoverColor": "{text.muted.hover.color}",
+                  "hoverColor": "{text.hover.muted.color}",
                   "hoverBackground": "{content.hover.background}",
                   "focusRing": {
                     "width": "{focus.ring.width}",
@@ -3051,13 +3465,13 @@ const _inlineRuntimeConfig = {
                   "borderColor": "{content.border.color}",
                   "borderRadius": "{content.border.radius}",
                   "shadow": "{overlay.navigation.shadow}",
-                  "mobileIndent": "1rem"
-                },
-                "submenuIcon": {
-                  "size": "{navigation.submenu.icon.size}",
-                  "color": "{navigation.submenu.icon.color}",
-                  "focusColor": "{navigation.submenu.icon.focus.color}",
-                  "activeColor": "{navigation.submenu.icon.active.color}"
+                  "mobileIndent": "1rem",
+                  "icon": {
+                    "size": "{navigation.submenu.icon.size}",
+                    "color": "{navigation.submenu.icon.color}",
+                    "focusColor": "{navigation.submenu.icon.focus.color}",
+                    "activeColor": "{navigation.submenu.icon.active.color}"
+                  }
                 },
                 "separator": {
                   "borderColor": "{content.border.color}"
@@ -3066,7 +3480,7 @@ const _inlineRuntimeConfig = {
                   "borderRadius": "50%",
                   "size": "1.75rem",
                   "color": "{text.muted.color}",
-                  "hoverColor": "{text.muted.hover.color}",
+                  "hoverColor": "{text.hover.muted.color}",
                   "hoverBackground": "{content.hover.background}",
                   "focusRing": {
                     "width": "{focus.ring.width}",
@@ -3085,14 +3499,32 @@ const _inlineRuntimeConfig = {
                 },
                 "content": {
                   "padding": "0.5rem 0.75rem",
-                  "gap": "0.5rem"
+                  "gap": "0.5rem",
+                  "sm": {
+                    "padding": "0.375rem 0.625rem"
+                  },
+                  "lg": {
+                    "padding": "0.625rem 0.875rem"
+                  }
                 },
                 "text": {
                   "fontSize": "1rem",
-                  "fontWeight": "500"
+                  "fontWeight": "500",
+                  "sm": {
+                    "fontSize": "0.875rem"
+                  },
+                  "lg": {
+                    "fontSize": "1.125rem"
+                  }
                 },
                 "icon": {
-                  "size": "1.125rem"
+                  "size": "1.125rem",
+                  "sm": {
+                    "size": "1rem"
+                  },
+                  "lg": {
+                    "size": "1.25rem"
+                  }
                 },
                 "closeButton": {
                   "width": "1.75rem",
@@ -3105,7 +3537,23 @@ const _inlineRuntimeConfig = {
                   }
                 },
                 "closeIcon": {
-                  "size": "1rem"
+                  "size": "1rem",
+                  "sm": {
+                    "size": "0.875rem"
+                  },
+                  "lg": {
+                    "size": "1.125rem"
+                  }
+                },
+                "outlined": {
+                  "root": {
+                    "borderWidth": "1px"
+                  }
+                },
+                "simple": {
+                  "content": {
+                    "padding": "0"
+                  }
                 },
                 "colorScheme": {
                   "light": {
@@ -3120,6 +3568,13 @@ const _inlineRuntimeConfig = {
                           "color": "{blue.600}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{blue.600}",
+                        "borderColor": "{blue.600}"
+                      },
+                      "simple": {
+                        "color": "{blue.600}"
                       }
                     },
                     "success": {
@@ -3133,6 +3588,13 @@ const _inlineRuntimeConfig = {
                           "color": "{green.600}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{green.600}",
+                        "borderColor": "{green.600}"
+                      },
+                      "simple": {
+                        "color": "{green.600}"
                       }
                     },
                     "warn": {
@@ -3146,6 +3608,13 @@ const _inlineRuntimeConfig = {
                           "color": "{yellow.600}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{yellow.600}",
+                        "borderColor": "{yellow.600}"
+                      },
+                      "simple": {
+                        "color": "{yellow.600}"
                       }
                     },
                     "error": {
@@ -3159,6 +3628,13 @@ const _inlineRuntimeConfig = {
                           "color": "{red.600}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{red.600}",
+                        "borderColor": "{red.600}"
+                      },
+                      "simple": {
+                        "color": "{red.600}"
                       }
                     },
                     "secondary": {
@@ -3172,6 +3648,13 @@ const _inlineRuntimeConfig = {
                           "color": "{surface.600}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{surface.500}",
+                        "borderColor": "{surface.500}"
+                      },
+                      "simple": {
+                        "color": "{surface.500}"
                       }
                     },
                     "contrast": {
@@ -3185,6 +3668,13 @@ const _inlineRuntimeConfig = {
                           "color": "{surface.50}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{surface.950}",
+                        "borderColor": "{surface.950}"
+                      },
+                      "simple": {
+                        "color": "{surface.950}"
                       }
                     }
                   },
@@ -3200,6 +3690,13 @@ const _inlineRuntimeConfig = {
                           "color": "{blue.500}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{blue.500}",
+                        "borderColor": "{blue.500}"
+                      },
+                      "simple": {
+                        "color": "{blue.500}"
                       }
                     },
                     "success": {
@@ -3213,6 +3710,13 @@ const _inlineRuntimeConfig = {
                           "color": "{green.500}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{green.500}",
+                        "borderColor": "{green.500}"
+                      },
+                      "simple": {
+                        "color": "{green.500}"
                       }
                     },
                     "warn": {
@@ -3226,6 +3730,13 @@ const _inlineRuntimeConfig = {
                           "color": "{yellow.500}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{yellow.500}",
+                        "borderColor": "{yellow.500}"
+                      },
+                      "simple": {
+                        "color": "{yellow.500}"
                       }
                     },
                     "error": {
@@ -3239,6 +3750,13 @@ const _inlineRuntimeConfig = {
                           "color": "{red.500}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{red.500}",
+                        "borderColor": "{red.500}"
+                      },
+                      "simple": {
+                        "color": "{red.500}"
                       }
                     },
                     "secondary": {
@@ -3252,6 +3770,13 @@ const _inlineRuntimeConfig = {
                           "color": "{surface.300}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{surface.400}",
+                        "borderColor": "{surface.400}"
+                      },
+                      "simple": {
+                        "color": "{surface.400}"
                       }
                     },
                     "contrast": {
@@ -3265,6 +3790,13 @@ const _inlineRuntimeConfig = {
                           "color": "{surface.950}",
                           "shadow": "none"
                         }
+                      },
+                      "outlined": {
+                        "color": "{surface.0}",
+                        "borderColor": "{surface.0}"
+                      },
+                      "simple": {
+                        "color": "{surface.0}"
                       }
                     }
                   }
@@ -3298,6 +3830,7 @@ const _inlineRuntimeConfig = {
                   "background": "{form.field.background}",
                   "disabledBackground": "{form.field.disabled.background}",
                   "filledBackground": "{form.field.filled.background}",
+                  "filledHoverBackground": "{form.field.filled.hover.background}",
                   "filledFocusBackground": "{form.field.filled.focus.background}",
                   "borderColor": "{form.field.border.color}",
                   "hoverBorderColor": "{form.field.hover.border.color}",
@@ -3306,6 +3839,7 @@ const _inlineRuntimeConfig = {
                   "color": "{form.field.color}",
                   "disabledColor": "{form.field.disabled.color}",
                   "placeholderColor": "{form.field.placeholder.color}",
+                  "invalidPlaceholderColor": "{form.field.invalid.placeholder.color}",
                   "shadow": "{form.field.shadow}",
                   "paddingX": "{form.field.padding.x}",
                   "paddingY": "{form.field.padding.y}",
@@ -3317,7 +3851,17 @@ const _inlineRuntimeConfig = {
                     "offset": "{form.field.focus.ring.offset}",
                     "shadow": "{form.field.focus.ring.shadow}"
                   },
-                  "transitionDuration": "{form.field.transition.duration}"
+                  "transitionDuration": "{form.field.transition.duration}",
+                  "sm": {
+                    "fontSize": "{form.field.sm.font.size}",
+                    "paddingX": "{form.field.sm.padding.x}",
+                    "paddingY": "{form.field.sm.padding.y}"
+                  },
+                  "lg": {
+                    "fontSize": "{form.field.lg.font.size}",
+                    "paddingX": "{form.field.lg.padding.x}",
+                    "paddingY": "{form.field.lg.padding.y}"
+                  }
                 },
                 "dropdown": {
                   "width": "2.5rem",
@@ -3354,6 +3898,9 @@ const _inlineRuntimeConfig = {
                   "color": "{list.option.group.color}",
                   "fontWeight": "{list.option.group.font.weight}",
                   "padding": "{list.option.group.padding}"
+                },
+                "clearIcon": {
+                  "color": "{form.field.icon.color}"
                 },
                 "chip": {
                   "borderRadius": "{border.radius.sm}"
@@ -3639,19 +4186,40 @@ const _inlineRuntimeConfig = {
                     "offset": "{focus.ring.offset}",
                     "shadow": "{focus.ring.shadow}"
                   },
-                  "transitionDuration": "{form.field.transition.duration}"
+                  "transitionDuration": "{form.field.transition.duration}",
+                  "sm": {
+                    "width": "1rem",
+                    "height": "1rem"
+                  },
+                  "lg": {
+                    "width": "1.5rem",
+                    "height": "1.5rem"
+                  }
                 },
                 "icon": {
                   "size": "0.75rem",
                   "checkedColor": "{primary.contrast.color}",
                   "checkedHoverColor": "{primary.contrast.color}",
-                  "disabledColor": "{form.field.disabled.color}"
+                  "disabledColor": "{form.field.disabled.color}",
+                  "sm": {
+                    "size": "0.5rem"
+                  },
+                  "lg": {
+                    "size": "1rem"
+                  }
                 }
               },
               "rating": {
                 "root": {
                   "gap": "0.25rem",
-                  "transitionDuration": "{transition.duration}"
+                  "transitionDuration": "{transition.duration}",
+                  "focusRing": {
+                    "width": "{focus.ring.width}",
+                    "style": "{focus.ring.style}",
+                    "color": "{focus.ring.color}",
+                    "offset": "{focus.ring.offset}",
+                    "shadow": "{focus.ring.shadow}"
+                  }
                 },
                 "icon": {
                   "size": "1rem",
@@ -3693,6 +4261,7 @@ const _inlineRuntimeConfig = {
                   "background": "{form.field.background}",
                   "disabledBackground": "{form.field.disabled.background}",
                   "filledBackground": "{form.field.filled.background}",
+                  "filledHoverBackground": "{form.field.filled.hover.background}",
                   "filledFocusBackground": "{form.field.filled.focus.background}",
                   "borderColor": "{form.field.border.color}",
                   "hoverBorderColor": "{form.field.hover.border.color}",
@@ -3701,6 +4270,7 @@ const _inlineRuntimeConfig = {
                   "color": "{form.field.color}",
                   "disabledColor": "{form.field.disabled.color}",
                   "placeholderColor": "{form.field.placeholder.color}",
+                  "invalidPlaceholderColor": "{form.field.invalid.placeholder.color}",
                   "shadow": "{form.field.shadow}",
                   "paddingX": "{form.field.padding.x}",
                   "paddingY": "{form.field.padding.y}",
@@ -3712,7 +4282,17 @@ const _inlineRuntimeConfig = {
                     "offset": "{form.field.focus.ring.offset}",
                     "shadow": "{form.field.focus.ring.shadow}"
                   },
-                  "transitionDuration": "{form.field.transition.duration}"
+                  "transitionDuration": "{form.field.transition.duration}",
+                  "sm": {
+                    "fontSize": "{form.field.sm.font.size}",
+                    "paddingX": "{form.field.sm.padding.x}",
+                    "paddingY": "{form.field.sm.padding.y}"
+                  },
+                  "lg": {
+                    "fontSize": "{form.field.lg.font.size}",
+                    "paddingX": "{form.field.lg.padding.x}",
+                    "paddingY": "{form.field.lg.padding.y}"
+                  }
                 },
                 "dropdown": {
                   "width": "2.5rem",
@@ -3929,7 +4509,8 @@ const _inlineRuntimeConfig = {
                 "steppanel": {
                   "background": "{content.background}",
                   "color": "{content.color}",
-                  "padding": "0 0 0 1rem"
+                  "padding": "0",
+                  "indent": "1rem"
                 }
               },
               "steps": {
@@ -4137,6 +4718,7 @@ const _inlineRuntimeConfig = {
                   "color": "{form.field.color}",
                   "disabledColor": "{form.field.disabled.color}",
                   "placeholderColor": "{form.field.placeholder.color}",
+                  "invalidPlaceholderColor": "{form.field.invalid.placeholder.color}",
                   "shadow": "{form.field.shadow}",
                   "paddingX": "{form.field.padding.x}",
                   "paddingY": "{form.field.padding.y}",
@@ -4148,7 +4730,17 @@ const _inlineRuntimeConfig = {
                     "offset": "{form.field.focus.ring.offset}",
                     "shadow": "{form.field.focus.ring.shadow}"
                   },
-                  "transitionDuration": "{form.field.transition.duration}"
+                  "transitionDuration": "{form.field.transition.duration}",
+                  "sm": {
+                    "fontSize": "{form.field.sm.font.size}",
+                    "paddingX": "{form.field.sm.padding.x}",
+                    "paddingY": "{form.field.sm.padding.y}"
+                  },
+                  "lg": {
+                    "fontSize": "{form.field.lg.font.size}",
+                    "paddingX": "{form.field.lg.padding.x}",
+                    "paddingY": "{form.field.lg.padding.y}"
+                  }
                 }
               },
               "tieredmenu": {
@@ -4179,11 +4771,8 @@ const _inlineRuntimeConfig = {
                     "activeColor": "{navigation.item.icon.active.color}"
                   }
                 },
-                "submenuLabel": {
-                  "padding": "{navigation.submenu.label.padding}",
-                  "fontWeight": "{navigation.submenu.label.font.weight}",
-                  "background": "{navigation.submenu.label.background.}",
-                  "color": "{navigation.submenu.label.color}"
+                "submenu": {
+                  "mobileIndent": "1rem"
                 },
                 "submenuIcon": {
                   "size": "{navigation.submenu.icon.size}",
@@ -4335,7 +4924,15 @@ const _inlineRuntimeConfig = {
                     "offset": "{focus.ring.offset}",
                     "shadow": "{focus.ring.shadow}"
                   },
-                  "transitionDuration": "{form.field.transition.duration}"
+                  "transitionDuration": "{form.field.transition.duration}",
+                  "sm": {
+                    "fontSize": "{form.field.sm.font.size}",
+                    "padding": "0.375rem 0.75rem"
+                  },
+                  "lg": {
+                    "fontSize": "{form.field.lg.font.size}",
+                    "padding": "0.625rem 1.25rem"
+                  }
                 },
                 "icon": {
                   "disabledColor": "{form.field.disabled.color}"
@@ -4409,41 +5006,51 @@ const _inlineRuntimeConfig = {
                   "checkedHoverBorderColor": "transparent",
                   "invalidBorderColor": "{form.field.invalid.border.color}",
                   "transitionDuration": "{form.field.transition.duration}",
-                  "slideDuration": "0.2s",
-                  "disabledBackground": "{form.field.disabled.background}"
+                  "slideDuration": "0.2s"
                 },
                 "handle": {
                   "borderRadius": "50%",
-                  "size": "1rem",
-                  "disabledBackground": "{form.field.disabled.color}"
+                  "size": "1rem"
                 },
                 "colorScheme": {
                   "light": {
                     "root": {
                       "background": "{surface.300}",
+                      "disabledBackground": "{form.field.disabled.background}",
                       "hoverBackground": "{surface.400}",
                       "checkedBackground": "{primary.color}",
                       "checkedHoverBackground": "{primary.hover.color}"
                     },
                     "handle": {
                       "background": "{surface.0}",
+                      "disabledBackground": "{form.field.disabled.color}",
                       "hoverBackground": "{surface.0}",
                       "checkedBackground": "{surface.0}",
-                      "checkedHoverBackground": "{surface.0}"
+                      "checkedHoverBackground": "{surface.0}",
+                      "color": "{text.muted.color}",
+                      "hoverColor": "{text.color}",
+                      "checkedColor": "{primary.color}",
+                      "checkedHoverColor": "{primary.hover.color}"
                     }
                   },
                   "dark": {
                     "root": {
                       "background": "{surface.700}",
+                      "disabledBackground": "{surface.600}",
                       "hoverBackground": "{surface.600}",
                       "checkedBackground": "{primary.color}",
                       "checkedHoverBackground": "{primary.hover.color}"
                     },
                     "handle": {
                       "background": "{surface.400}",
+                      "disabledBackground": "{surface.900}",
                       "hoverBackground": "{surface.300}",
                       "checkedBackground": "{surface.900}",
-                      "checkedHoverBackground": "{surface.900}"
+                      "checkedHoverBackground": "{surface.900}",
+                      "color": "{surface.900}",
+                      "hoverColor": "{surface.800}",
+                      "checkedColor": "{primary.color}",
+                      "checkedHoverColor": "{primary.hover.color}"
                     }
                   }
                 }
@@ -4497,6 +5104,9 @@ const _inlineRuntimeConfig = {
                 },
                 "loadingIcon": {
                   "size": "2rem"
+                },
+                "filter": {
+                  "margin": "0 0 0.5rem 0"
                 }
               },
               "treeselect": {
@@ -4504,6 +5114,7 @@ const _inlineRuntimeConfig = {
                   "background": "{form.field.background}",
                   "disabledBackground": "{form.field.disabled.background}",
                   "filledBackground": "{form.field.filled.background}",
+                  "filledHoverBackground": "{form.field.filled.hover.background}",
                   "filledFocusBackground": "{form.field.filled.focus.background}",
                   "borderColor": "{form.field.border.color}",
                   "hoverBorderColor": "{form.field.hover.border.color}",
@@ -4512,6 +5123,7 @@ const _inlineRuntimeConfig = {
                   "color": "{form.field.color}",
                   "disabledColor": "{form.field.disabled.color}",
                   "placeholderColor": "{form.field.placeholder.color}",
+                  "invalidPlaceholderColor": "{form.field.invalid.placeholder.color}",
                   "shadow": "{form.field.shadow}",
                   "paddingX": "{form.field.padding.x}",
                   "paddingY": "{form.field.padding.y}",
@@ -4523,7 +5135,17 @@ const _inlineRuntimeConfig = {
                     "offset": "{form.field.focus.ring.offset}",
                     "shadow": "{form.field.focus.ring.shadow}"
                   },
-                  "transitionDuration": "{form.field.transition.duration}"
+                  "transitionDuration": "{form.field.transition.duration}",
+                  "sm": {
+                    "fontSize": "{form.field.sm.font.size}",
+                    "paddingX": "{form.field.sm.padding.x}",
+                    "paddingY": "{form.field.sm.padding.y}"
+                  },
+                  "lg": {
+                    "fontSize": "{form.field.lg.font.size}",
+                    "paddingX": "{form.field.lg.padding.x}",
+                    "paddingY": "{form.field.lg.padding.y}"
+                  }
                 },
                 "dropdown": {
                   "width": "2.5rem",
@@ -4538,6 +5160,9 @@ const _inlineRuntimeConfig = {
                 },
                 "tree": {
                   "padding": "{list.padding}"
+                },
+                "clearIcon": {
+                  "color": "{form.field.icon.color}"
                 },
                 "emptyMessage": {
                   "padding": "{list.option.padding}"
@@ -4621,7 +5246,8 @@ const _inlineRuntimeConfig = {
                 },
                 "sortIcon": {
                   "color": "{text.muted.color}",
-                  "hoverColor": "{text.hover.muted.color}"
+                  "hoverColor": "{text.hover.muted.color}",
+                  "size": "0.875rem"
                 },
                 "loadingIcon": {
                   "size": "2rem"
@@ -4987,6 +5613,14 @@ const _inlineRuntimeConfig = {
           "global": true
         },
         {
+          "name": "CheckboxGroup",
+          "as": "CheckboxGroup",
+          "from": "primevue/checkboxgroup",
+          "export": "default",
+          "filePath": "primevue/checkboxgroup",
+          "global": true
+        },
+        {
           "name": "Chips",
           "as": "Chips",
           "from": "primevue/chips",
@@ -5019,6 +5653,14 @@ const _inlineRuntimeConfig = {
           "global": true
         },
         {
+          "name": "Editor",
+          "as": "Editor",
+          "from": "primevue/editor",
+          "export": "default",
+          "filePath": "primevue/editor",
+          "global": true
+        },
+        {
           "name": "FloatLabel",
           "as": "FloatLabel",
           "from": "primevue/floatlabel",
@@ -5040,6 +5682,14 @@ const _inlineRuntimeConfig = {
           "from": "primevue/iconfield",
           "export": "default",
           "filePath": "primevue/iconfield",
+          "global": true
+        },
+        {
+          "name": "IftaLabel",
+          "as": "IftaLabel",
+          "from": "primevue/iftalabel",
+          "export": "default",
+          "filePath": "primevue/iftalabel",
           "global": true
         },
         {
@@ -5152,6 +5802,14 @@ const _inlineRuntimeConfig = {
           "from": "primevue/radiobutton",
           "export": "default",
           "filePath": "primevue/radiobutton",
+          "global": true
+        },
+        {
+          "name": "RadioButtonGroup",
+          "as": "RadioButtonGroup",
+          "from": "primevue/radiobuttongroup",
+          "export": "default",
+          "filePath": "primevue/radiobuttongroup",
           "global": true
         },
         {
@@ -5724,6 +6382,14 @@ const _inlineRuntimeConfig = {
           "global": true
         },
         {
+          "name": "Chart",
+          "as": "Chart",
+          "from": "primevue/chart",
+          "export": "default",
+          "filePath": "primevue/chart",
+          "global": true
+        },
+        {
           "name": "Message",
           "as": "Message",
           "from": "primevue/message",
@@ -5772,6 +6438,14 @@ const _inlineRuntimeConfig = {
           "from": "primevue/image",
           "export": "default",
           "filePath": "primevue/image",
+          "global": true
+        },
+        {
+          "name": "ImageCompare",
+          "as": "ImageCompare",
+          "from": "primevue/imagecompare",
+          "export": "default",
+          "filePath": "primevue/imagecompare",
           "global": true
         },
         {
@@ -5885,6 +6559,22 @@ const _inlineRuntimeConfig = {
           "export": "default",
           "filePath": "primevue/terminal",
           "global": true
+        },
+        {
+          "name": "Form",
+          "from": "@primevue/forms/form",
+          "as": "Form",
+          "export": "default",
+          "filePath": "@primevue/forms/form",
+          "global": true
+        },
+        {
+          "name": "FormField",
+          "from": "@primevue/forms/formfield",
+          "as": "FormField",
+          "export": "default",
+          "filePath": "@primevue/forms/formfield",
+          "global": true
         }
       ],
       "directives": [
@@ -5917,6 +6607,11 @@ const _inlineRuntimeConfig = {
           "name": "animateonscroll",
           "as": "AnimateOnScroll",
           "from": "primevue/animateonscroll"
+        },
+        {
+          "name": "keyfilter",
+          "as": "KeyFilter",
+          "from": "primevue/keyfilter"
         }
       ],
       "composables": [
@@ -6028,36 +6723,38 @@ new Proxy(/* @__PURE__ */ Object.create(null), {
   }
 });
 
-const serverAssets = [{"baseName":"server","dir":"/Users/emmanuel/Desktop/Task ManagerV3/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"/Users/emmanuel/Desktop/GoogleMaps/server/assets"}];
 
 const assets = createStorage();
 
 for (const asset of serverAssets) {
-  assets.mount(asset.baseName, unstorage_47drivers_47fs({ base: asset.dir }));
+  assets.mount(asset.baseName, unstorage_47drivers_47fs({ base: asset.dir, ignore: (asset?.ignore || []) }));
 }
 
 const storage = createStorage({});
 
 storage.mount('/assets', assets);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/emmanuel/Desktop/Task ManagerV3","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/emmanuel/Desktop/Task ManagerV3/server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/emmanuel/Desktop/Task ManagerV3/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/emmanuel/Desktop/Task ManagerV3/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/emmanuel/Desktop/Task ManagerV3/.data/kv","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/emmanuel/Desktop/GoogleMaps","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/emmanuel/Desktop/GoogleMaps/server","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/emmanuel/Desktop/GoogleMaps/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/emmanuel/Desktop/GoogleMaps/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/emmanuel/Desktop/GoogleMaps/.data/kv","ignore":["**/node_modules/**","**/.git/**"]}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
 }
 
-const defaultCacheOptions = {
-  name: "_",
-  base: "/cache",
-  swr: true,
-  maxAge: 1
-};
+function defaultCacheOptions() {
+  return {
+    name: "_",
+    base: "/cache",
+    swr: true,
+    maxAge: 1
+  };
+}
 function defineCachedFunction(fn, opts = {}) {
-  opts = { ...defaultCacheOptions, ...opts };
+  opts = { ...defaultCacheOptions(), ...opts };
   const pending = {};
   const group = opts.group || "nitro/functions";
   const name = opts.name || fn.name || "_";
@@ -6065,14 +6762,17 @@ function defineCachedFunction(fn, opts = {}) {
   const validate = opts.validate || ((entry) => entry.value !== void 0);
   async function get(key, resolver, shouldInvalidateCache, event) {
     const cacheKey = [opts.base, group, name, key + ".json"].filter(Boolean).join(":").replace(/:\/$/, ":index");
-    let entry = await useStorage().getItem(cacheKey) || {};
+    let entry = await useStorage().getItem(cacheKey).catch((error) => {
+      console.error(`[nitro] [cache] Cache read error.`, error);
+      useNitroApp().captureError(error, { event, tags: ["cache"] });
+    }) || {};
     if (typeof entry !== "object") {
       entry = {};
       const error = new Error("Malformed data read from cache.");
       console.error("[nitro] [cache]", error);
       useNitroApp().captureError(error, { event, tags: ["cache"] });
     }
-    const ttl = (opts.maxAge ?? opts.maxAge ?? 0) * 1e3;
+    const ttl = (opts.maxAge ?? 0) * 1e3;
     if (ttl) {
       entry.expires = Date.now() + ttl;
     }
@@ -6101,11 +6801,15 @@ function defineCachedFunction(fn, opts = {}) {
         entry.integrity = integrity;
         delete pending[key];
         if (validate(entry) !== false) {
-          const promise = useStorage().setItem(cacheKey, entry).catch((error) => {
+          let setOpts;
+          if (opts.maxAge && !opts.swr) {
+            setOpts = { ttl: opts.maxAge };
+          }
+          const promise = useStorage().setItem(cacheKey, entry, setOpts).catch((error) => {
             console.error(`[nitro] [cache] Cache write error.`, error);
             useNitroApp().captureError(error, { event, tags: ["cache"] });
           });
-          if (event && event.waitUntil) {
+          if (event?.waitUntil) {
             event.waitUntil(promise);
           }
         }
@@ -6146,14 +6850,16 @@ function defineCachedFunction(fn, opts = {}) {
     return value;
   };
 }
-const cachedFunction = defineCachedFunction;
+function cachedFunction(fn, opts = {}) {
+  return defineCachedFunction(fn, opts);
+}
 function getKey(...args) {
   return args.length > 0 ? hash(args, {}) : "";
 }
 function escapeKey(key) {
   return String(key).replace(/\W/g, "");
 }
-function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
+function defineCachedEventHandler(handler, opts = defaultCacheOptions()) {
   const variableHeaderNames = (opts.varies || []).filter(Boolean).map((h) => h.toLowerCase()).sort();
   const _opts = {
     ...opts,
@@ -6163,7 +6869,12 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
         return escapeKey(customKey);
       }
       const _path = event.node.req.originalUrl || event.node.req.url || event.path;
-      const _pathname = escapeKey(decodeURI(parseURL(_path).pathname)).slice(0, 16) || "index";
+      let _pathname;
+      try {
+        _pathname = escapeKey(decodeURI(parseURL(_path).pathname)).slice(0, 16) || "index";
+      } catch {
+        _pathname = "-";
+      }
       const _hashedPath = `${_pathname}.${hash(_path)}`;
       const _headers = variableHeaderNames.map((header) => [header, event.node.req.headers[header]]).map(([name, value]) => `${escapeKey(name)}.${hash(value)}`);
       return [_hashedPath, ..._headers].join(":");
@@ -6190,7 +6901,10 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
     async (incomingEvent) => {
       const variableHeaders = {};
       for (const header of variableHeaderNames) {
-        variableHeaders[header] = incomingEvent.node.req.headers[header];
+        const value = incomingEvent.node.req.headers[header];
+        if (value !== void 0) {
+          variableHeaders[header] = value;
+        }
       }
       const reqProxy = cloneWithProxy(incomingEvent.node.req, {
         headers: variableHeaders
@@ -6239,18 +6953,27 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
             _resSendBody = chunk;
           }
           if (typeof arg2 === "function") {
-            arg2();
+            arg2(void 0);
           }
           if (typeof arg3 === "function") {
             arg3();
           }
-          return this;
+          return true;
         },
         writeHead(statusCode, headers2) {
           this.statusCode = statusCode;
           if (headers2) {
+            if (Array.isArray(headers2) || typeof headers2 === "string") {
+              throw new TypeError("Raw headers  is not supported.");
+            }
             for (const header in headers2) {
-              this.setHeader(header, headers2[header]);
+              const value = headers2[header];
+              if (value !== void 0) {
+                this.setHeader(
+                  header,
+                  value
+                );
+              }
             }
           }
           return this;
@@ -6307,7 +7030,9 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
       }
       return handler(event);
     }
-    const response = await _cachedHandler(event);
+    const response = await _cachedHandler(
+      event
+    );
     if (event.node.res.headersSent || event.node.res.writableEnded) {
       return response.body;
     }
@@ -6327,7 +7052,9 @@ function defineCachedEventHandler(handler, opts = defaultCacheOptions) {
           splitCookiesString(value)
         );
       } else {
-        event.node.res.setHeader(name, value);
+        if (value !== void 0) {
+          event.node.res.setHeader(name, value);
+        }
       }
     }
     return response.body;
@@ -6352,77 +7079,43 @@ function cloneWithProxy(obj, overrides) {
 }
 const cachedEventHandler = defineCachedEventHandler;
 
-function hasReqHeader(event, name, includes) {
-  const value = getRequestHeader(event, name);
-  return value && typeof value === "string" && value.toLowerCase().includes(includes);
-}
-function isJsonRequest(event) {
-  if (hasReqHeader(event, "accept", "text/html")) {
-    return false;
-  }
-  return hasReqHeader(event, "accept", "application/json") || hasReqHeader(event, "user-agent", "curl/") || hasReqHeader(event, "user-agent", "httpie/") || hasReqHeader(event, "sec-fetch-mode", "cors") || event.path.startsWith("/api/") || event.path.endsWith(".json");
-}
-function normalizeError(error) {
-  const cwd = typeof process.cwd === "function" ? process.cwd() : "/";
-  const stack = (error.stack || "").split("\n").splice(1).filter((line) => line.includes("at ")).map((line) => {
-    const text = line.replace(cwd + "/", "./").replace("webpack:/", "").replace("file://", "").trim();
-    return {
-      text,
-      internal: line.includes("node_modules") && !line.includes(".cache") || line.includes("internal") || line.includes("new Promise")
-    };
-  });
-  const statusCode = error.statusCode || 500;
-  const statusMessage = error.statusMessage ?? (statusCode === 404 ? "Not Found" : "");
-  const message = error.message || error.toString();
-  return {
-    stack,
-    statusCode,
-    statusMessage,
-    message
-  };
-}
-function _captureError(error, type) {
-  console.error(`[nitro] [${type}]`, error);
-  useNitroApp().captureError(error, { tags: [type] });
-}
-function trapUnhandledNodeErrors() {
-  process.on(
-    "unhandledRejection",
-    (error) => _captureError(error, "unhandledRejection")
-  );
-  process.on(
-    "uncaughtException",
-    (error) => _captureError(error, "uncaughtException")
-  );
-}
-function joinHeaders(value) {
-  return Array.isArray(value) ? value.join(", ") : String(value);
-}
-function normalizeFetchResponse(response) {
-  if (!response.headers.has("set-cookie")) {
-    return response;
-  }
-  return new Response(response.body, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: normalizeCookieHeaders(response.headers)
-  });
-}
-function normalizeCookieHeader(header = "") {
-  return splitCookiesString(joinHeaders(header));
-}
-function normalizeCookieHeaders(headers) {
-  const outgoingHeaders = new Headers();
-  for (const [name, header] of headers) {
-    if (name === "set-cookie") {
-      for (const cookie of normalizeCookieHeader(header)) {
-        outgoingHeaders.append("set-cookie", cookie);
+function defineRenderHandler(render) {
+  const runtimeConfig = useRuntimeConfig();
+  return eventHandler(async (event) => {
+    const nitroApp = useNitroApp();
+    const ctx = { event, render, response: void 0 };
+    await nitroApp.hooks.callHook("render:before", ctx);
+    if (!ctx.response) {
+      if (event.path === `${runtimeConfig.app.baseURL}favicon.ico`) {
+        setResponseHeader(event, "Content-Type", "image/x-icon");
+        return send(
+          event,
+          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+        );
       }
-    } else {
-      outgoingHeaders.set(name, joinHeaders(header));
+      ctx.response = await ctx.render(event);
+      if (!ctx.response) {
+        const _currentStatus = getResponseStatus(event);
+        setResponseStatus(event, _currentStatus === 200 ? 500 : _currentStatus);
+        return send(
+          event,
+          "No response returned from render handler: " + event.path
+        );
+      }
     }
-  }
-  return outgoingHeaders;
+    await nitroApp.hooks.callHook("render:response", ctx.response, ctx);
+    if (ctx.response.headers) {
+      setResponseHeaders(event, ctx.response.headers);
+    }
+    if (ctx.response.statusCode || ctx.response.statusMessage) {
+      setResponseStatus(
+        event,
+        ctx.response.statusCode,
+        ctx.response.statusMessage
+      );
+    }
+    return ctx.response.body;
+  });
 }
 
 const config$1 = useRuntimeConfig();
@@ -6483,110 +7176,12 @@ function getRouteRulesForPath(path) {
   return defu({}, ..._routeRulesMatcher.matchAll(path).reverse());
 }
 
-const script = `
-if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
-  Object.defineProperty(window, '__NUXT_DEVTOOLS_TIME_METRIC__', {
-    value: {},
-    enumerable: false,
-    configurable: true,
-  })
-}
-window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
-`;
-
-const _kJDchwrSMm = (function(nitro) {
-  nitro.hooks.hook("render:html", (htmlContext) => {
-    htmlContext.head.push(`<script>${script}<\/script>`);
-  });
+getContext("nitro-app", {
+  asyncContext: false,
+  AsyncLocalStorage: void 0
 });
 
-const rootDir = "/Users/emmanuel/Desktop/Task ManagerV3";
-
-const appHead = {"meta":[{"name":"viewport","content":"width=device-width, initial-scale=1"},{"charset":"utf-8"}],"link":[],"style":[],"script":[],"noscript":[]};
-
-const appRootTag = "div";
-
-const appRootAttrs = {"id":"__nuxt"};
-
-const appTeleportTag = "div";
-
-const appTeleportAttrs = {"id":"teleports"};
-
-const appId = "nuxt-app";
-
-const devReducers = {
-  VNode: (data) => isVNode(data) ? { type: data.type, props: data.props } : void 0,
-  URL: (data) => data instanceof URL ? data.toString() : void 0
-};
-const asyncContext = getContext("nuxt-dev", { asyncContext: true, AsyncLocalStorage });
-const _Vcr4bLB4hE = (nitroApp) => {
-  const handler = nitroApp.h3App.handler;
-  nitroApp.h3App.handler = (event) => {
-    return asyncContext.callAsync({ logs: [], event }, () => handler(event));
-  };
-  onConsoleLog((_log) => {
-    const ctx = asyncContext.tryUse();
-    if (!ctx) {
-      return;
-    }
-    const rawStack = captureRawStackTrace();
-    if (!rawStack || rawStack.includes("runtime/vite-node.mjs")) {
-      return;
-    }
-    const trace = [];
-    let filename = "";
-    for (const entry of parseRawStackTrace(rawStack)) {
-      if (entry.source === globalThis._importMeta_.url) {
-        continue;
-      }
-      if (EXCLUDE_TRACE_RE.test(entry.source)) {
-        continue;
-      }
-      filename ||= entry.source.replace(withTrailingSlash(rootDir), "");
-      trace.push({
-        ...entry,
-        source: entry.source.startsWith("file://") ? entry.source.replace("file://", "") : entry.source
-      });
-    }
-    const log = {
-      ..._log,
-      // Pass along filename to allow the client to display more info about where log comes from
-      filename,
-      // Clean up file names in stack trace
-      stack: trace
-    };
-    ctx.logs.push(log);
-  });
-  nitroApp.hooks.hook("afterResponse", () => {
-    const ctx = asyncContext.tryUse();
-    if (!ctx) {
-      return;
-    }
-    return nitroApp.hooks.callHook("dev:ssr-logs", { logs: ctx.logs, path: ctx.event.path });
-  });
-  nitroApp.hooks.hook("render:html", (htmlContext) => {
-    const ctx = asyncContext.tryUse();
-    if (!ctx) {
-      return;
-    }
-    try {
-      const reducers = Object.assign(/* @__PURE__ */ Object.create(null), devReducers, ctx.event.context._payloadReducers);
-      htmlContext.bodyAppend.unshift(`<script type="application/json" data-nuxt-logs="${appId}">${stringify(ctx.logs, reducers)}<\/script>`);
-    } catch (e) {
-      const shortError = e instanceof Error && "toString" in e ? ` Received \`${e.toString()}\`.` : "";
-      console.warn(`[nuxt] Failed to stringify dev server logs.${shortError} You can define your own reducer/reviver for rich types following the instructions in https://nuxt.com/docs/api/composables/use-nuxt-app#payload.`);
-    }
-  });
-};
-const EXCLUDE_TRACE_RE = /\/node_modules\/(?:.*\/)?(?:nuxt|nuxt-nightly|nuxt-edge|nuxt3|consola|@vue)\/|core\/runtime\/nitro/;
-function onConsoleLog(callback) {
-  consola.addReporter({
-    log(logObj) {
-      callback(logObj);
-    }
-  });
-  consola.wrapConsole();
-}
+const r=Object.create(null),i=e=>globalThis.process?.env||globalThis._importMeta_.env||globalThis.Deno?.env.toObject()||globalThis.__env__||(e?r:globalThis),s=new Proxy(r,{get(e,o){return i()[o]??r[o]},has(e,o){const E=i();return o in E||o in r},set(e,o,E){const b=i(!0);return b[o]=E,!0},deleteProperty(e,o){if(!o)return !1;const E=i(!0);return delete E[o],!0},ownKeys(){const e=i(!0);return Object.keys(e)}}),t=typeof process<"u"&&process.env&&"development"||"",B=[["APPVEYOR"],["AWS_AMPLIFY","AWS_APP_ID",{ci:!0}],["AZURE_PIPELINES","SYSTEM_TEAMFOUNDATIONCOLLECTIONURI"],["AZURE_STATIC","INPUT_AZURE_STATIC_WEB_APPS_API_TOKEN"],["APPCIRCLE","AC_APPCIRCLE"],["BAMBOO","bamboo_planKey"],["BITBUCKET","BITBUCKET_COMMIT"],["BITRISE","BITRISE_IO"],["BUDDY","BUDDY_WORKSPACE_ID"],["BUILDKITE"],["CIRCLE","CIRCLECI"],["CIRRUS","CIRRUS_CI"],["CLOUDFLARE_PAGES","CF_PAGES",{ci:!0}],["CODEBUILD","CODEBUILD_BUILD_ARN"],["CODEFRESH","CF_BUILD_ID"],["DRONE"],["DRONE","DRONE_BUILD_EVENT"],["DSARI"],["GITHUB_ACTIONS"],["GITLAB","GITLAB_CI"],["GITLAB","CI_MERGE_REQUEST_ID"],["GOCD","GO_PIPELINE_LABEL"],["LAYERCI"],["HUDSON","HUDSON_URL"],["JENKINS","JENKINS_URL"],["MAGNUM"],["NETLIFY"],["NETLIFY","NETLIFY_LOCAL",{ci:!1}],["NEVERCODE"],["RENDER"],["SAIL","SAILCI"],["SEMAPHORE"],["SCREWDRIVER"],["SHIPPABLE"],["SOLANO","TDDIUM"],["STRIDER"],["TEAMCITY","TEAMCITY_VERSION"],["TRAVIS"],["VERCEL","NOW_BUILDER"],["VERCEL","VERCEL",{ci:!1}],["VERCEL","VERCEL_ENV",{ci:!1}],["APPCENTER","APPCENTER_BUILD_ID"],["CODESANDBOX","CODESANDBOX_SSE",{ci:!1}],["STACKBLITZ"],["STORMKIT"],["CLEAVR"],["ZEABUR"],["CODESPHERE","CODESPHERE_APP_ID",{ci:!0}],["RAILWAY","RAILWAY_PROJECT_ID"],["RAILWAY","RAILWAY_SERVICE_ID"],["DENO-DEPLOY","DENO_DEPLOYMENT_ID"],["FIREBASE_APP_HOSTING","FIREBASE_APP_HOSTING",{ci:!0}]];function p(){if(globalThis.process?.env)for(const e of B){const o=e[1]||e[0];if(globalThis.process?.env[o])return {name:e[0].toLowerCase(),...e[2]}}return globalThis.process?.env?.SHELL==="/bin/jsh"&&globalThis.process?.versions?.webcontainer?{name:"stackblitz",ci:!1}:{name:"",ci:!1}}const l=p(),d=l.name;function n(e){return e?e!=="false":!1}const I=globalThis.process?.platform||"",T=n(s.CI)||l.ci!==!1,R=n(globalThis.process?.stdout&&globalThis.process?.stdout.isTTY);n(s.DEBUG);const A=t==="test"||n(s.TEST);n(s.MINIMAL)||T||A||!R;const _=/^win/i.test(I);!n(s.NO_COLOR)&&(n(s.FORCE_COLOR)||(R||_)&&s.TERM!=="dumb"||T);const C=(globalThis.process?.versions?.node||"").replace(/^v/,"")||null;Number(C?.split(".")[0])||null;const y=globalThis.process||Object.create(null),c={versions:{}};new Proxy(y,{get(e,o){if(o==="env")return s;if(o in e)return e[o];if(o in c)return c[o]}});const L=globalThis.process?.release?.name==="node",a=!!globalThis.Bun||!!globalThis.process?.versions?.bun,D=!!globalThis.Deno,O=!!globalThis.fastly,S=!!globalThis.Netlify,N=!!globalThis.EdgeRuntime,P=globalThis.navigator?.userAgent==="Cloudflare-Workers",F=[[S,"netlify"],[N,"edge-light"],[P,"workerd"],[O,"fastly"],[D,"deno"],[a,"bun"],[L,"node"]];function G(){const e=F.find(o=>o[0]);if(e)return {name:e[1]}}const u=G();u?.name||"";
 
 const scheduledTasks = false;
 
@@ -6625,37 +7220,6 @@ async function runTask(name, {
   }
 }
 
-function defineRenderHandler(handler) {
-  const runtimeConfig = useRuntimeConfig();
-  return eventHandler(async (event) => {
-    if (event.path === `${runtimeConfig.app.baseURL}favicon.ico`) {
-      setResponseHeader(event, "Content-Type", "image/x-icon");
-      return send(
-        event,
-        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-      );
-    }
-    const response = await handler(event);
-    if (!response) {
-      const _currentStatus = getResponseStatus(event);
-      setResponseStatus(event, _currentStatus === 200 ? 500 : _currentStatus);
-      return send(
-        event,
-        "No response returned from render handler: " + event.path
-      );
-    }
-    const nitroApp = useNitroApp();
-    await nitroApp.hooks.callHook("render:response", response, { event });
-    if (response.headers) {
-      setResponseHeaders(event, response.headers);
-    }
-    if (response.statusCode || response.statusMessage) {
-      setResponseStatus(event, response.statusCode, response.statusMessage);
-    }
-    return response.body;
-  });
-}
-
 function buildAssetsDir() {
   return useRuntimeConfig().app.buildAssetsDir;
 }
@@ -6674,22 +7238,23 @@ const { options = {} } = config;
 
 const stylesToTop = [].join('');
 const styleProps = {
-  
+    
 };
 const styles$2 = [
-  ,
-  BaseStyle && BaseStyle.getStyleSheet ? BaseStyle.getStyleSheet(undefined, styleProps) : ''
+    ,
+    BaseStyle && BaseStyle.getStyleSheet ? BaseStyle.getStyleSheet(undefined, styleProps) : ''
 ].join('');
 
 Theme.setTheme(options?.theme);
 
-const themes = [
+const themes = 
+[
     BaseStyle && BaseStyle.getCommonThemeStyleSheet ? BaseStyle.getCommonThemeStyleSheet(undefined, styleProps) : '',
     BaseStyle && BaseStyle.getThemeStyleSheet ? BaseStyle.getThemeStyleSheet(undefined, styleProps) : ''
 ].join('');
 
 const defineNitroPlugin = (def) => def;
-const _CnsOJ49epJ = defineNitroPlugin(async (nitroApp) => {
+const _31mWhwlBoX = defineNitroPlugin(async (nitroApp) => {
   nitroApp.hooks.hook("render:html", (html) => {
     html.head.unshift(stylesToTop);
     html.head.push(styles$2);
@@ -6698,84 +7263,24 @@ const _CnsOJ49epJ = defineNitroPlugin(async (nitroApp) => {
 });
 
 const plugins = [
-  _kJDchwrSMm,
-_Vcr4bLB4hE,
-_CnsOJ49epJ
+  _nhCbxAtuM2,
+_Ttmbt81cUe,
+_31mWhwlBoX
 ];
 
-const errorHandler = (async function errorhandler(error, event) {
-  const { stack, statusCode, statusMessage, message } = normalizeError(error);
-  const errorObject = {
-    url: event.path,
-    statusCode,
-    statusMessage,
-    message,
-    stack: statusCode !== 404 ? `<pre>${stack.map((i) => `<span class="stack${i.internal ? " internal" : ""}">${i.text}</span>`).join("\n")}</pre>` : "",
-    // TODO: check and validate error.data for serialisation into query
-    data: error.data
-  };
-  if (error.unhandled || error.fatal) {
-    const tags = [
-      "[nuxt]",
-      "[request error]",
-      error.unhandled && "[unhandled]",
-      error.fatal && "[fatal]",
-      Number(errorObject.statusCode) !== 200 && `[${errorObject.statusCode}]`
-    ].filter(Boolean).join(" ");
-    console.error(tags, (error.message || error.toString() || "internal server error") + "\n" + stack.map((l) => "  " + l.text).join("  \n"));
-  }
-  if (event.handled) {
-    return;
-  }
-  setResponseStatus(event, errorObject.statusCode !== 200 && errorObject.statusCode || 500, errorObject.statusMessage);
-  if (isJsonRequest(event)) {
-    setResponseHeader(event, "Content-Type", "application/json");
-    return send(event, JSON.stringify(errorObject));
-  }
-  const reqHeaders = getRequestHeaders(event);
-  const isRenderingError = event.path.startsWith("/__nuxt_error") || !!reqHeaders["x-nuxt-error"];
-  const res = isRenderingError ? null : await useNitroApp().localFetch(
-    withQuery(joinURL(useRuntimeConfig(event).app.baseURL, "/__nuxt_error"), errorObject),
-    {
-      headers: { ...reqHeaders, "x-nuxt-error": "true" },
-      redirect: "manual"
-    }
-  ).catch(() => null);
-  if (!res) {
-    const { template } = await Promise.resolve().then(function () { return errorDev; }) ;
-    {
-      errorObject.description = errorObject.message;
-    }
-    if (event.handled) {
-      return;
-    }
-    setResponseHeader(event, "Content-Type", "text/html;charset=UTF-8");
-    return send(event, template(errorObject));
-  }
-  const html = await res.text();
-  if (event.handled) {
-    return;
-  }
-  for (const [header, value] of res.headers.entries()) {
-    setResponseHeader(event, header, value);
-  }
-  setResponseStatus(event, res.status && res.status !== 200 ? res.status : void 0, res.statusText);
-  return send(event, html);
-});
-
-const _lazy_wc6lhJ = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_hLj6qi = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_wc6lhJ, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_wc6lhJ, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_hLj6qi, lazy: true, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_hLj6qi, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
   const config = useRuntimeConfig();
   const hooks = createHooks();
   const captureError = (error, context = {}) => {
-    const promise = hooks.callHookParallel("error", error, context).catch((_err) => {
-      console.error("Error while capturing another error", _err);
+    const promise = hooks.callHookParallel("error", error, context).catch((error_) => {
+      console.error("Error while capturing another error", error_);
     });
     if (context.event && isEvent(context.event)) {
       const errors = context.event.context.nitro?.errors;
@@ -6794,17 +7299,17 @@ function createNitroApp() {
       return errorHandler(error, event);
     },
     onRequest: async (event) => {
-      await nitroApp.hooks.callHook("request", event).catch((error) => {
+      await nitroApp$1.hooks.callHook("request", event).catch((error) => {
         captureError(error, { event, tags: ["request"] });
       });
     },
     onBeforeResponse: async (event, response) => {
-      await nitroApp.hooks.callHook("beforeResponse", event, response).catch((error) => {
+      await nitroApp$1.hooks.callHook("beforeResponse", event, response).catch((error) => {
         captureError(error, { event, tags: ["request", "response"] });
       });
     },
     onAfterResponse: async (event, response) => {
-      await nitroApp.hooks.callHook("afterResponse", event, response).catch((error) => {
+      await nitroApp$1.hooks.callHook("afterResponse", event, response).catch((error) => {
         captureError(error, { event, tags: ["request", "response"] });
       });
     }
@@ -6879,39 +7384,44 @@ function createNitroApp() {
     localFetch,
     captureError
   };
-  for (const plugin of plugins) {
-    try {
-      plugin(app);
-    } catch (err) {
-      captureError(err, { tags: ["plugin"] });
-      throw err;
-    }
-  }
   return app;
 }
-const nitroApp = createNitroApp();
-const useNitroApp = () => nitroApp;
+function runNitroPlugins(nitroApp2) {
+  for (const plugin of plugins) {
+    try {
+      plugin(nitroApp2);
+    } catch (error) {
+      nitroApp2.captureError(error, { tags: ["plugin"] });
+      throw error;
+    }
+  }
+}
+const nitroApp$1 = createNitroApp();
+function useNitroApp() {
+  return nitroApp$1;
+}
+runNitroPlugins(nitroApp$1);
 
+const nitroApp = useNitroApp();
 const server = new Server(toNodeListener(nitroApp.h3App));
 function getAddress() {
   if (d === "stackblitz" || process.env.NITRO_NO_UNIX_SOCKET || process.versions.bun) {
     return 0;
   }
   const socketName = `worker-${process.pid}-${threadId}.sock`;
-  if (a) {
-    return join("\\\\.\\pipe\\nitro", socketName);
-  } else {
-    const socketDir = join(tmpdir(), "nitro");
-    mkdirSync(socketDir, { recursive: true });
-    return join(socketDir, socketName);
+  if (_) {
+    return join(String.raw`\\.\pipe\nitro`, socketName);
   }
+  const socketDir = join(tmpdir(), "nitro");
+  mkdirSync(socketDir, { recursive: true });
+  return join(socketDir, socketName);
 }
 const listenAddress = getAddress();
 server.listen(listenAddress, () => {
   const _address = server.address();
-  parentPort.postMessage({
+  parentPort?.postMessage({
     event: "listen",
-    address: typeof _address === "string" ? { socketPath: _address } : { host: "localhost", port: _address.port }
+    address: typeof _address === "string" ? { socketPath: _address } : { host: "localhost", port: _address?.port }
   });
 });
 nitroApp.router.get(
@@ -6944,10 +7454,10 @@ trapUnhandledNodeErrors();
 async function onShutdown(signal) {
   await nitroApp.hooks.callHook("close");
 }
-parentPort.on("message", async (msg) => {
+parentPort?.on("message", async (msg) => {
   if (msg && msg.event === "shutdown") {
     await onShutdown();
-    parentPort.postMessage({ event: "exit" });
+    parentPort?.postMessage({ event: "exit" });
   }
 });
 
@@ -7027,8 +7537,8 @@ const renderSSRHeadOptions = {"omitLineBreaks":false};
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
-const getClientManifest = () => import('file:///Users/emmanuel/Desktop/Task%20ManagerV3/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
-const getServerEntry = () => import('file:///Users/emmanuel/Desktop/Task%20ManagerV3/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
+const getClientManifest = () => import('file:///Users/emmanuel/Desktop/GoogleMaps/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getServerEntry = () => import('file:///Users/emmanuel/Desktop/GoogleMaps/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
 const getSSRStyles = lazyCachedFunction(() => Promise.resolve().then(function () { return styles$1; }).then((r) => r.default || r));
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
@@ -7176,13 +7686,12 @@ const renderer = defineRenderHandler(async (event) => {
   }
   if (!isRenderingIsland || true) {
     const link = [];
-    for (const style in styles) {
-      const resource = styles[style];
+    for (const resource of Object.values(styles)) {
       if ("inline" in getQuery(resource.file)) {
         continue;
       }
       if (!isRenderingIsland || resource.file.includes("scoped") && !resource.file.includes("pages/")) {
-        link.push({ rel: "stylesheet", href: renderer.rendererContext.buildAssetsURL(resource.file) });
+        link.push({ rel: "stylesheet", href: renderer.rendererContext.buildAssetsURL(resource.file), crossorigin: "" });
       }
     }
     if (link.length) {
@@ -7306,7 +7815,7 @@ async function renderInlineStyles(usedModules) {
   const styleMap = await getSSRStyles();
   const inlinedStyles = /* @__PURE__ */ new Set();
   for (const mod of usedModules) {
-    if (mod in styleMap) {
+    if (mod in styleMap && styleMap[mod]) {
       for (const style of await styleMap[mod]()) {
         inlinedStyles.add(style);
       }
@@ -7356,7 +7865,7 @@ function splitPayload(ssrContext) {
 }
 function getServerComponentHTML(body) {
   const match = body[0].match(ROOT_NODE_REGEX);
-  return match ? match[1] : body[0];
+  return match?.[1] || body[0];
 }
 const SSR_SLOT_TELEPORT_MARKER = /^uid=([^;]*);slot=(.*)$/;
 const SSR_CLIENT_TELEPORT_MARKER = /^uid=([^;]*);client=(.*)$/;
@@ -7366,10 +7875,10 @@ function getSlotIslandResponse(ssrContext) {
     return void 0;
   }
   const response = {};
-  for (const slot in ssrContext.islandContext.slots) {
-    response[slot] = {
-      ...ssrContext.islandContext.slots[slot],
-      fallback: ssrContext.teleports?.[`island-fallback=${slot}`]
+  for (const [name, slot] of Object.entries(ssrContext.islandContext.slots)) {
+    response[name] = {
+      ...slot,
+      fallback: ssrContext.teleports?.[`island-fallback=${name}`]
     };
   }
   return response;
@@ -7379,10 +7888,10 @@ function getClientIslandResponse(ssrContext) {
     return void 0;
   }
   const response = {};
-  for (const clientUid in ssrContext.islandContext.components) {
-    const html = ssrContext.teleports?.[clientUid].replaceAll("<!--teleport start anchor-->", "") || "";
+  for (const [clientUid, component] of Object.entries(ssrContext.islandContext.components)) {
+    const html = ssrContext.teleports?.[clientUid]?.replaceAll("<!--teleport start anchor-->", "") || "";
     response[clientUid] = {
-      ...ssrContext.islandContext.components[clientUid],
+      ...component,
       html,
       slots: getComponentSlotTeleport(ssrContext.teleports ?? {})
     };
