@@ -10,21 +10,11 @@ A dynamic real estate application that visualizes property listings on an intera
 
 🗺️ Interactive property map
 
-🏘️ Real-time property listings
 
-🔍 Advanced search filters
-
-💰 Price range filtering
-
-🛏️ Property type categorization
-
-📐 Draw search area functionality
 
 🌍 Street view integration 
 
-❤️ Save favorite properties
 
-📱 Fully responsive design
 
 # 🛠️ Tech Stack
 
@@ -36,7 +26,6 @@ Tailwind CSS
 
 Google Maps API
 
-Axios
 
 # Features:
 
