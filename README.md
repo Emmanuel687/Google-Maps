@@ -1,74 +1,59 @@
-# Nuxt 3 Minimal Starter
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# 🏠 Property Finder - Real Estate Map Explorer
+![Project Banner/Screenshot - Add your app screenshot here]
 
-## Setup
+# 📝 Description
 
-Make sure to install the dependencies:
+A dynamic real estate application that visualizes property listings on an interactive map. Users can explore available properties, filter by various criteria, and get detailed information about listings in their desired locations.
 
-```bash
-# npm
-npm install
 
-# pnpm
-pnpm install
+# ✨ Key Features
 
-# yarn
-yarn install
+🗺️ Interactive property map
 
-# bun
-bun install
-```
+🏘️ Real-time property listings
 
-## Development Server
+🔍 Advanced search filters
 
-Start the development server on `http://localhost:3000`:
+💰 Price range filtering
 
-```bash
-# npm
-npm run dev
+🛏️ Property type categorization
 
-# pnpm
-pnpm run dev
+📐 Draw search area functionality
 
-# yarn
-yarn dev
+🌍 Street view integration 
 
-# bun
-bun run dev
-```
+❤️ Save favorite properties
 
-## Production
+📱 Fully responsive design
 
-Build the application for production:
+# 🛠️ Tech Stack
 
-```bash
-# npm
-npm run build
+Frontend:
 
-# pnpm
-pnpm run build
+Vue.js 3
 
-# yarn
-yarn build
+Tailwind CSS
 
-# bun
-bun run build
-```
+Google Maps API
 
-Locally preview production build:
+Axios
 
-```bash
-# npm
-npm run preview
+# Features:
 
-# pnpm
-pnpm run preview
+Google Maps JavaScript API
 
-# yarn
-yarn preview
+Google Places Autocomplete
 
-# bun
-bun run preview
-```
+Google Street View
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Property filtering system
+
+# 🚀 Getting Started
+
+Prerequisites
+
+Node.js (v14 or higher)
+
+npm or yarn
+
+Google Maps API key
